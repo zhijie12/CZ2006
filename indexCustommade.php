@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<!-- test comment -->
 <head>
     <title>Harmonious Living @ NTU</title>
     <link rel="shortcut icon" type="image/x-icon" href="IMG/logo(S).png" />
