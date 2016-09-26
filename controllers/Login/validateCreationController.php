@@ -21,6 +21,7 @@
 				if ($mysql->query($insertSql)==true){
 						header("Location: ../../index.php?error=s1");
 					}else{
+						echo $insertSql;
 						header("Location: ../../index.php?error=e3");
 					}
 			}

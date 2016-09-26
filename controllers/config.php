@@ -1,7 +1,7 @@
 <?php 	
 		$servername = "localhost";
 		$username = "root";
-		$password = "91175507";
+		$password = "password";
 		$dbname = "HarmoniousLivingDB";
 		
 		// Create connection
