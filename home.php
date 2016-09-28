@@ -120,7 +120,7 @@
                         </div>
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="index.html">
+                                <a href="home.php">
                                     <span class="icon glyphicon glyphicon-home"></span><span class="title">Home</span>
                                 </a>
                             </li>
@@ -156,7 +156,7 @@
                                 <div id="dropdown-element" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href=""><span class= "icon glyphicon glyphicon-circle-arrow-up"></span>Upload My HDB</a>
+                                            <li><a href="manageFlats.php"><span class= "icon glyphicon glyphicon-circle-arrow-up"></span>Upload My HDB123</a>
                                             </li>
                                         </ul>
                                     </div>
