@@ -31,6 +31,63 @@
     <!-- CSS App -->
     <link rel="stylesheet" type="text/css" href="css/dashstyle.css">
     <link rel="stylesheet" type="text/css" href="css/flat-blue.css">
+
+    <script>
+        function validateForm() {
+            var outputMsg="";
+            var vnric = document.getElementsByName("nric")[0].value;
+            var vcontactnumber = document.getElementsByName("contactnumber")[0].value;
+            var vfullname = document.getElementsByName("fullname")[0].value;
+            var vaddress = document.getElementsByName("address")[0].value;
+            var vdateofbirth = document.getElementsByName("dateofbirth")[0].value;
+            var vpostalcode = document.getElementsByName("postalcode")[0].value;
+            var vincome = document.getElementsByName("income")[0].value;
+            var vcitizenship = document.getElementsByName("citizenship")[0].value;
+            var vflageligibility = document.getElementsByName("flageligibility")[0].value;
+            var vprofilepicture = document.getElementsByName("profilepicture")[0].value;
+            if (vnric == null || vnric == "") {
+                outputMsg=outputMsg + "- NRIC field is empty<br />";
+            }
+            if (vfullname == null || vfullname== "") {
+                outputMsg=outputMsg + "- Name field is empty<br />";
+            }
+             if (vdateofbirth == null || vdateofbirth == "") {
+                outputMsg=outputMsg + "- Date of birth field is empty <br />";
+            }
+             if (vprofilepicture == null || vprofilepicture == "") {
+                outputMsg= outputMsg + "- Profile picture field is empty <br />";
+            } 
+            if (vcitizenship == null || vcitizenship == "") {
+                outputMsg=outputMsg + "- citizenship field is not selected<br />";
+            }
+            if (vcontactnumber == null || vcontactnumber == "") {
+                outputMsg=outputMsg + "- Contact number field is empty <br />";
+            }
+            if (vaddress == null || vaddress == "") {
+                outputMsg=outputMsg + "- Address field is empty <br />";
+            }
+            if (vpostalcode == null || vpostalcode == "") {
+                outputMsg=outputMsg + "- Postal Code field is empty <br />";
+            }
+            if (vincome == null || vincome == "") {
+                outputMsg=outputMsg + "- Income field is empty<br />";
+            }
+
+            if (vflageligibility == null || vflageligibility == "") {
+                outputMsg=outputMsg +  "- Flat Eligibility  field is empty<br />";
+            }
+
+            if(outputMsg == null || outputMsg == ""){
+                return true;
+            }else{
+                 document.getElementsByName("isa_error")[0].style.display = "block";
+                 document.getElementsByName("error_para")[0].innerHTML ='<i class="fa fa-times-circle" style="align:left"></i>'+'There are validation errors when submiting the form: <br/><div style="align:right;padding-left:8%;">'+outputMsg+"</div>";
+                 $('html, body').animate({ scrollTop: 0 }, 'slow');
+             }
+            return false;
+        }
+</script>
+
 </head>
 
 <body class="flat-blue">
@@ -183,12 +240,18 @@
                                         <div class="title">Please enter your profile details:</div>
                                     </div>
                                 </div>
-                                <div class="card-body">             
-                                 <form action="controllers/ProfileManager/validateUserProfileController.php" method="POST" enctype="multipart/form-data">
+                                <div class="card-body">
+                                    <!--This portion is to do validation check and out put details-->
+                                        <div class="isa_error" name="isa_error" style="display:none;">
+                                                <p name="error_para">
+                                                    Your Profile has not been saved successfully.
+                                                    </p>
+                                                </div>
+                                 <form onsubmit="return validateForm()"  action="controllers/ProfileManager/validateUserProfileController.php" method="POST" enctype="multipart/form-data" >
                                     <div class="sub-title">NRIC: 
                                     </div>
                                     <div>
-                                 <input type="text" name="flageligibility" class="form-control"  placeholder='<?php echo $_SESSION['userNRIC']; ?>' readOnly="true">
+                                 <input type="text" name="nric" class="form-control"  placeholder='<?php echo $_SESSION['userNRIC']; ?>' readOnly="true" value="<?php echo $_SESSION['userNRIC']; ?>" >
 
                                     </div>
 
@@ -324,7 +387,7 @@
                                     </div>
                                     <div class="sub-title"></div>
                                     <div>
-                                    <button type="submit" class="btn btn-default">Save Changes</button>
+                                    <button type="submit" value="Submit" class="btn btn-default">Save Changes</button>
                                     </div>
                                 </form>
                                 </div>

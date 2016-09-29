@@ -31,6 +31,26 @@ if(!isset($_SESSION['userNRIC'])){
              <!-- CSS App -->
              <link rel="stylesheet" type="text/css" href="css/dashstyle.css">
              <link rel="stylesheet" type="text/css" href="css/flat-blue.css">
+             <style>
+             th{
+                text-align: center  !important;
+                align:center !important;
+                font-size: 17px;
+                background-color: #F4F4F2 !important;
+                color: black !important;
+             }
+             th,td{
+
+                padding: 10px !important;
+             }
+             table{
+                width:75% !important;
+                align:center !important;
+                text-align: center !important;
+                margin-left: 10% !important;
+
+             }
+             </style>
          </head>
 
          <body class="flat-blue">
@@ -173,67 +193,88 @@ if(!isset($_SESSION['userNRIC'])){
                         <div class="side-body">
                             <div class="page-title">
                                 <span class="title">HDB Flat Comparison</span>
-                                <div class="description">A bootstrap table for display list of data.</div>
+                                <!--<div class="description">A bootstrap table for display list of data.</div>-->
                             </div>
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="card">
+                                                                    <div class="card-header">
+                                    <div class="card-title">
+                                        <div class="title">Here is the comparison of flats you've selected:</div>
+                                    </div>
+                                </div>
                                         <div class="card-body">
                                             <!-- Table -->
-                                            <table class="table" border="1">
+                                            <table class="table" border="1" text-align="center" style="align:center; text-align:center;">
                                                 <thead>
-                                                    <tr>
-                                                        <th width="70%"></th>
-                                                        <th width="15%"> HDB 1</th>
-                                                        <th width="15%"> HDB 2</th>
+                                                    <tr class="info">
+                                                    <th colspan=2>Resale Flats Selected</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <tr>
+                                                        <td width="50%"> HDB 1</td>
+                                                        <td width="50%"> HDB 2</td>
+                                                    </tr>
                                                     <tr class="info">
-                                                        <th scope="row">Address</th>
+                                                        <th colspan="2" name="row" scope="row">HDB Area</th>
+                                                        <tr/>
                                                         <td>Ang Mo Kio</td>
                                                         <td>Woodlands</td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">Town</th>
+                                                    <tr class="info">
+                                                        <th colspan="2">Town</th>
+                                                        </tr><tr  scope="row">
                                                         <td>AMK</td>
                                                         <td>WLD</td>
                                                     </tr>
                                                     <tr class="info">
-                                                        <th scope="row">Floor Area (sqft)</th>
-                                                        <td>1500</td>
-                                                        <td>2000</td>
+                                                        <th scope="row" name="row"  colspan="2">Floor Area (sqft)</th>
+                                                        </tr><tr  scope="row">
+                                                        <td>1500 sqft</td>
+                                                        <td>2000 sqft</td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">Storey</th>
+                                                    <tr class="info">
+                                                        <th scope="row" name="row"  colspan="2">Storey</th>
+                                                                                                                </tr><tr  scope="row">
                                                         <td> 5 </td>
                                                         <td> 10</td>
                                                     </tr>
                                                     <tr class="info">
-                                                        <th scope="row">Lease Commence Date</th>
+                                                        <th scope="row" name="row"  colspan="2">Lease Commence Date</th>
+                                                                                                                </tr><tr  scope="row">
                                                         <td> 2 apr 2012</td>
                                                         <td> 3 apr 2013</td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">Asking Price</th>
+                                                    <tr class="info">
+                                                        <th scope="row" name="row"  colspan="2">Asking Price</th>
+                                                                                                                </tr><tr  scope="row">
                                                         <td>1500000</td>
                                                         <td>1203052</td>
                                                     </tr>
                                                     <tr class="info">
-                                                        <th scope="row">Flat Model</th>
+                                                        <th scope="row" name="row"  colspan="2">Flat Model</th>
+                                                                                                                </tr><tr  scope="row">
                                                         <td> Executive </td>
                                                         <td> 5 Room Flat </td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">Flat Type</th>
+                                                    <tr class="info">
+                                                        <th scope="row" name="row"  colspan="2">Flat Type</th>
+                                                                                                                </tr><tr  scope="row">
                                                         <td> Apartment </td>
                                                         <td> Apartment</td>
                                                     </tr>
                                                     <tr class="info">
-                                                        <th scope="row">HDB Description</th>
+                                                        <th scope="row" name="row"  colspan="2">HDB Description</th>
+                                                                                                                </tr><tr  scope="row">
                                                         <td> Hello buy this now! </td>
                                                         <td> Buy this! </td>
-                                                    </tr>                                                
+                                                    </tr>  
+                                                    <tr>
+                                                        <td colspan="2" name="row"> <a href="url">Compare them on map now!</a>
+                                                        </td>                                               
+                                                        </td>
+                                                    </tr>                                              
                                                 </tbody>
                                             </table>
                                         </div>
@@ -246,8 +287,7 @@ if(!isset($_SESSION['userNRIC'])){
                 </div>
                 <footer class="app-footer">
                     <div class="wrapper">
-                        <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
-                    </div>
+                  </div>
                 </footer>
                 <div>
                     <!-- Javascript Libs -->
