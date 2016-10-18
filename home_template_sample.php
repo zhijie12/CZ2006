@@ -1,14 +1,8 @@
-<?php
-       include("entity/UserProfile.php");
-        session_start();
-        $userProfile = unserialize($_SESSION['userProfile']);
-        if(!isset($_SESSION['userNRIC'])){
-            header("Location: index.php"); //Redirect back
-            exit();
-        }
-    ?>
 
+// header will perform check for session as well as load all related libraries 
 <?php include("header.php") ?>
+
+
  <!-- Main Content -->
 <div class="container-fluid">
 	<div class="side-body">

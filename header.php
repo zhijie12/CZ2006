@@ -1,5 +1,10 @@
-<?php 
-
+<?php include("entity/UserProfile.php");
+    session_start();
+    $userProfile = unserialize($_SESSION['userProfile']);
+    if(!isset($_SESSION['userNRIC'])){
+        header("Location: index.php"); //Redirect back
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
