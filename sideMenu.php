@@ -54,18 +54,22 @@
                                 </li>
                                 <li>
                                     <div class="profile-info">
-                                        <h4 class="username"><?php
-                                    if($userProfile->getNric()!='nil'){
-                                         echo $userProfile->getFullName(); 
-                                    }else{
-                                        echo "User";
-                                    }
-                                         ?></h4>
+                                        <h4 class="username">
+                                        <?php
+                                    		if($userProfile->getNric()!='nil'){
+                                         		echo $userProfile->getFullName(); 
+                                    		}else{
+                                        		echo "User";
+                                    		}
+                                        ?>
+                                        </h4>
                                         <p><?php echo $_SESSION['userEmail']; ?> </p>
                                         <div class="btn-group margin-bottom-2x" role="group">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
-                                           <a href="index.php">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
+                                            <a href="userProfile.php">
+                                            	<button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
+                                           	</a>
+                                           	<a href="index.php">
+                                           		<button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
                                             </a>
                                         </div>
                                     </div>
@@ -103,9 +107,9 @@
                                                         <!-- View Profile  -->
                             <li 
                             <?php 
-                            if($page=="userProfile.php"){
-                             echo "class=\"active\"";
-                            }
+	                            if($page=="userProfile.php"){
+	                             	echo "class=\"active\"";
+	                            }
                             ?>
                             >
                                 <a href="userProfile.php">
@@ -120,33 +124,24 @@
                              echo "class=\"active\"";
                             }?>
                             >
-                                <a href="http://www.google.com">
+                                <a href="browseresaleHDB.php">
                                     <span class="icon glyphicon glyphicon-search"></span><span class="title">Browse Resale HDB</span>
                                 </a>
                             </li>
                                 <!--End of dropdown-->
                                 <!-- View Past Listings  -->
                             <li>
-                                <a href="http://facebook.com">
+                                <a href="browsepasttrends.php">
                                     <span class="icon glyphicon glyphicon-stats"></span><span class="title">Browse Past Trends</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                             </li>
                                 <!--End of dropdown-->      
                             <!-- View Past Listings  -->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-element">
-                                    <span class="icon glyphicon glyphicon-list-alt"></span><span class="title">View My Listings</span>
+                            <li>
+                                <a href="viewHDBListing.php">
+                                    <span class="icon glyphicon glyphicon-list-alt"></span><span class="title">View My HDB Listing</span>
                                 </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-element" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="manageFlats.php"><span class= "icon glyphicon glyphicon-circle-arrow-up"></span>Upload My HDB123</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </li>
                                 <!--End of dropdown-->        
                         </ul>
