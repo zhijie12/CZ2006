@@ -51,7 +51,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form method="post" action="">
+                                    <form method="post" action="controllers/SellerResaleFlats/manageFlatsController.php">
                                     <div class="sub-title">Address </div>
                                     <div>
                                         <input type="text" class="form-control" name="address" placeholder="e.g. Woodlands Drive 52" required>
