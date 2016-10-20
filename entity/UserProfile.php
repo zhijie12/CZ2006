@@ -9,9 +9,13 @@
       var $occupation;
       var $income;
       var $citizenship;
-      var $flateligibility;
       var $nric;
-      var $profileURL;
+      var $profileURL;            
+      var $employmentStatus;
+      var $MOPStatus;
+      var $hdbOwnership;
+      var $maritalStatus;
+
       
       /* Member functions */
       function setProfileURL($profileURL){
@@ -91,20 +95,43 @@
       function getCitizenship(){
          return $this->citizenship;
       }
-      function setFlatEligibility($flateligibility){
-         $this->flateligibility=$flateligibility;
+
+      function setEmploymentStatus($employmentStatus){
+         $this->employmentStatus = $employmentStatus;
       }
 
-      function getFlatEligibility(){
-         return $this->flateligibility;
+      function getEmploymentStatus(){
+         return $this->employmentStatus;
       }
+
+      function setMOPStatus($MOPStatus){
+         $this->MOPStatus = $MOPStatus;
+      }
+      function getMOPStatus(){
+         return $this->MOPStatus;
+      }
+    
+      function setHDBOwnership($hdbOwnership){
+         $this->hdbOwnership = $hdbOwnership;
+      }    
+      function getHDBOwnership(){
+         return $this->hdbOwnership;
+      }
+
+      function setMartialStatus($maritalStatus){
+         $this->maritalStatus = $maritalStatus;
+      }    
+      function getMartialStatus(){
+         return $this->maritalStatus;
+      }
+
       function getInsertSQL(){
-         $sql = "INSERT INTO UserProfile(NRIC, contactNo, fullName, address, postalCode, dateOfBirth, occupation, income, citizenship, flatEligibility, profileUrl) VALUES 
-            ('$this->nric', $this->contactnumber, '$this->fullname', '$this->address', $this->postalcode, '$this->dateofbirth', '$this->occupation', $this->income, '$this->citizenship', '$this->flateligibility', '$this->profileURL')";
+         $sql = "INSERT INTO `mainapplicant` (`nric`, `contactNo`, `name`, `address`, `postalCode`, `dateOfBirth`, `occupation`, `income`, `citizenship`, `employmentStatus`, `profileUrl`, `MOPStatus`, `hdbOwnership`, `maritalStatus`) VALUES
+            ('$this->nric', $this->contactnumber, '$this->fullname', '$this->address', $this->postalcode, '$this->dateofbirth', '$this->occupation', $this->income, '$this->citizenship', '$this->employmentStatus', '$this->profileURL',$this->MOPStatus, '$this->hdbOwnership', '$this->maritalStatus', )";
          return $sql;
       }
       function checkProfileQuery(){
-         $sql="Select * from UserProfile where NRIC='$this->nric'";
+         $sql="Select * from mainapplicant where NRIC='$this->nric'";
          return $sql;
       }
 

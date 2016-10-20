@@ -1,25 +1,29 @@
 <?php
-	include("../config.php");
-	include("../../entity/UserAccount.php");
-	include("../../entity/UserProfile.php");
+include("../config.php");
+include("../../entity/UserAccount.php");
+include("../../entity/UserProfile.php");
 	//populate entity
-	$userAcc = new UserAccount();
-	$userProfile= new UserProfile();
-	session_start();
-	if($_SERVER["REQUEST_METHOD"] == "POST") {
-		$user = mysqli_real_escape_string($mysql,$_POST['nric']);
-		$userAcc->setNric($user);
-		$userAcc->setPassword($_POST["password"]);
-		$sql = $userAcc->getLoginQuery();
+$userAcc = new UserAccount();
+$userProfile= new UserProfile();
+session_start();
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+	$user = mysqli_real_escape_string($mysql,$_POST['nric']);
+	$userAcc->setNric($user);
+	$userAcc->setPassword($_POST["password"]);
+	$sql = $userAcc->getLoginQuery();
 		$result = mysqli_query($mysql,$sql); //query the database with the condition, and storing it into a variable
 		$row = mysqli_num_rows($result);
 		if($row>0){
 			$col = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
 			if($result && password_verify($_POST["password"],$col["password"])){
 				//Retrieve user profileinfomation and pass it as object
 				$userProfile->setNric($user);
 				$sql= $userProfile->checkProfileQuery();
-				$result2 = mysqli_query($mysql,$sql)or die(mysql_error());
+
+				$result2 = mysqli_query($mysql,$sql)or die( mysqli_error($mysql) ); //DIED HERE
+
 				if($result2== true){
 					$num_rows = mysqli_num_rows($result2);
 					$row = mysqli_fetch_array($result2, MYSQL_ASSOC);
@@ -36,6 +40,7 @@
 						$userProfile->setFlatEligibility($row['flatEligibility']);
 						$userProfile->setProfileURL($row['profileUrl']);
 						$userProfile->setNric($user);
+
 					}else{
 						$userProfile->setNric("nil");
 					}
@@ -48,12 +53,15 @@
 					echo "no results";
 				}
 			}else{
+
 				header("Location: ../../index.php?error=e4");
+
 				exit();
 			}
 		}else{
+
 			header("Location: ../../index.php?error=e4");
 			exit();
 		}
 	}
-?>
+	?>
