@@ -1,14 +1,38 @@
 <?php
-       include("entity/UserProfile.php");
-        session_start();
-        $userProfile = unserialize($_SESSION['userProfile']);
-        if(!isset($_SESSION['userNRIC'])){
-            header("Location: index.php"); //Redirect back
-            exit();
-        }
-    ?>
+    include("controllers/config.php");
+    session_start();
+    $userProfile = unserialize($_SESSION['userProfile']);
+    if(!isset($_SESSION['userNRIC'])){
+        header("Location: index.php"); //Redirect back
+        exit();
+    }
+
+    //Populate form with previously entered data
+    $userNRIC = $_SESSION['userNRIC'];
+    $sql = "SELECT * FROM `resaleflat` WHERE `ownerNRIC` = '$userNRIC'";
+    $result = $mysql->query($sql);
+    $row = $result->fetch_assoc();
+    
+    $town = $row['town'];
+    $address = $row['address'];
+    $floorarea = $row['floorArea'];
+    $storey = $row['storey'];
+    $leaseCommence = $row['leaseCommenceDate'];
+    $price = $row['price'];
+    $flatType = $row['flatType'];
+    $flatModel= $row['flatModel'];
+    $hdbDescription= $row['hdbDescription'];
+
+    
+
+?>
 <!DOCTYPE html>
 <html>
+
+<script type="text/javascript">
+  document.getElementById('flatType').value = $flatType;
+  document.getElementById('flatModel').value = $flatModel;
+</script>
 
 <head>
     <title>Harmonious Living @ NTU</title>
@@ -54,48 +78,54 @@
                                     <form method="post" action="controllers/SellerResaleFlats/manageFlatsController.php">
                                     <div class="sub-title">Address </div>
                                     <div>
-                                        <input type="text" class="form-control" name="address" placeholder="e.g. Woodlands Drive 52" required>
+                                        <input type="text" class="form-control" name="address" placeholder="e.g. Woodlands Drive 52" 
+                                        value="<?php echo "$address"; ?>" required>
                                     </div>
                                     <div class="sub-title">Town</div>
                                     <div>
-                                        <input type="text" class="form-control" name="town" placeholder="e.g. Woodlands" required>
+                                        <input type="text" class="form-control" name="town" placeholder="e.g. Woodlands"
+                                        value="<?php echo "$town"; ?>" required>
                                     </div>
 
                                     <div class="sub-title"> Floor Area (sqft) </div>
                                     <div>
-                                        <input type="text" class="form-control" name="floorarea" placeholder="e.g. 1500" required>
+                                        <input type="text" class="form-control" name="floorarea" placeholder="e.g. 1500" 
+                                        value="<?php echo "$floorarea"; ?>" required>
                                     </div>
 
                                     <div class="sub-title"> Storey </div>
                                     <div>
-                                        <input type="text" class="form-control" name="storey" placeholder="e.g. 7" required>
+                                        <input type="text" class="form-control" name="storey" placeholder="e.g. 7" 
+                                        value="<?php echo "$storey"; ?>"required>
                                     </div>
 
                                     <div class="sub-title"> Lease Commence Date: </div>
                                     <div>
-                                        <input type="date" class="form-control" name="leaseCommence" placeholder="" required>
+                                        <input type="date" class="form-control" name="leaseCommence" placeholder="" 
+                                        value="<?php echo "$leaseCommence"; ?>"required>
                                     </div>
 
                                     <div class="sub-title"> Asking Price:  </div>
                                     <div>
-                                        <input type="text" class="form-control" name="askingPrice" placeholder="e.g. 10000000" required>
+                                        <input type="text" class="form-control" name="askingPrice" placeholder="e.g. 10000000" 
+                                        value="<?php echo "$price"; ?>" required>
                                     </div>
 
 
                                     <div class="sub-title"> Flat Model: </div>
-                                    <div>
-                                        <select name="flatType" required> 
-                                            <option> 2 Room </option>
-                                            <option> 3 Room </option>
-                                            <option> 4 Room </option>
-                                            <option> 5 Room </option>
-                                            <option> Executive </option>
+                                    <div> <?php echo "$flatType"; ?>
+                                        <select name="flatType" id="flatType" required> 
+                                            <option value="2 Room"> 2 Room </option>
+                                            <option value="3 Room"> 3 Room </option>
+                                            <option value="4 room"> 4 Room </option>
+                                            <option value="5 room"> 5 Room </option>
+                                            <option value="Executive"> Executive </option>
                                         </select>   
                                     </div>
 
                                     <div class="sub-title"> Flat Type: </div>
                                     <div>
-                                        <select name="flatModel" required> 
+                                        <select name="flatModel" id="flatModel" required> 
                                             <option> Adjoined Flat </option>    
                                             <option> Apartment </option>
                                             <option> Improved </option>
@@ -115,7 +145,8 @@
 
                                     <div class="sub-title"> HDB Description </div>
                                     <div>
-                                        <textarea class="form-control" name="hdbDescription" placeholder="e.g. 3 Toilet, includes aircon"   > </textarea> 
+                                        <textarea class="form-control" name="hdbDescription" placeholder="e.g. 3 Toilet, includes aircon"   
+                                        ><?php echo "$hdbDescription";?></textarea> 
                                     </div>
                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form>

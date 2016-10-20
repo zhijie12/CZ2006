@@ -1,9 +1,10 @@
 <?php
 include("../config.php");
 include("../../entity/NewResaleFlat.php");
+include("../../entity/UserProfile.php");
 session_start();
-
-	$NewResaleFlat = new NewResaleFlat();
+//$userProfile = unserialize($_SESSION['userProfile']);
+$NewResaleFlat = new NewResaleFlat();
 
 /*
 		// Create table if not exist
@@ -36,56 +37,42 @@ session_start();
 			&& !empty($_POST['storey']) && !empty($_POST['leaseCommence']) && !empty($_POST['askingPrice']) 
 			&& !empty($_POST['flatType']) && !empty($_POST['flatModel']) && !empty($_POST['hdbDescription'])){
 
-			$address = $_POST['address'];
-			$town = $_POST['town'];
-			$floorarea = $_POST['floorarea'];
-			$storey = $_POST['storey'];
-			$leaseCommence = $_POST['leaseCommence'];
-			$askingPrice = $_POST['askingPrice'];
-			$flatType = $_POST['flatType'];
-			$flatModel = $_POST['flatModel'];
-			$hdbDescription = $_POST['hdbDescription'];
-			
-			date_default_timezone_set('Asia/Singapore');
-			//$date = date_default_timezone_get();
-			$date = date('Y-m-d');
+		$address = $_POST['address'];
+		$town = $_POST['town'];
+		$floorarea = $_POST['floorarea'];
+		$storey = $_POST['storey'];
+		$leaseCommence = $_POST['leaseCommence'];
+		$askingPrice = $_POST['askingPrice'];
+		$flatType = $_POST['flatType'];
+		$flatModel = $_POST['flatModel'];
+		$hdbDescription = $_POST['hdbDescription'];
 
-			$NewResaleFlat->setAddress($address);
-			$NewResaleFlat->setTown($town);
-			$NewResaleFlat->setFloorArea($floorarea);
-			$NewResaleFlat->setStorey($storey);
-			$NewResaleFlat->setLeaseCommence($leaseCommence);
-			$NewResaleFlat->setAskingPrice($askingPrice);
-			$NewResaleFlat->setFlatType($flatType);
-			$NewResaleFlat->setFlatModel($flatModel);
-			$NewResaleFlat->setHDBDescription($hdbDescription);
-			$NewResaleFlat->setDate($date);
+		date_default_timezone_set('Asia/Singapore');		
+		$date = date('Y-m-d');
 
-			$insertSQL = $NewResaleFlat->getInsertSQL();
+		$NewResaleFlat->setAddress($address);
+		$NewResaleFlat->setTown($town);
+		$NewResaleFlat->setFloorArea($floorarea);
+		$NewResaleFlat->setStorey($storey);
+		$NewResaleFlat->setLeaseCommence($leaseCommence);
+		$NewResaleFlat->setAskingPrice($askingPrice);
+		$NewResaleFlat->setFlatType($flatType);
+		$NewResaleFlat->setFlatModel($flatModel);
+		$NewResaleFlat->setHDBDescription($hdbDescription);
+		$NewResaleFlat->setDate($date);
+		$NewResaleFlat->setNric($_SESSION['userNRIC']);
+		$insertSQL = $NewResaleFlat->getInsertSQL();
+		$alterSQL = $NewResaleFlat->getAlterSQL();
 
-			echo ("Hello: $insertSQL");
+		//echo ("Hello: $insertSQL");
+		if ($mysql->query($insertSQL)==true){ //insert successful
 	
+		}else { //Already exist edit current value
+			$mysql->query($alterSQL);
+		}
+		header("Location: ../../uploadFlats.php");
+	}else{ //redirect back to the form
 
-			}else{
-				/*
-				echo $_POST['contactnumber'];
-				echo "--a-";
-				echo $_POST['fullname'];
-				echo "---";
-				echo $_POST['address'];
-				echo "---";
-				echo $_POST['postalcode'];
-				echo "---";
-				echo $_POST['occupation'];
-				echo "---";
-				echo $_POST['income'];
-				echo "---";
-				echo $_POST['citizenship'];
-				echo "---";
-				echo $_POST['flateligibility'];
-				echo "---";
-				echo $target_file;
-				*/
-			}
-		
-	?>
+	}
+
+?>

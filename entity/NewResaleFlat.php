@@ -11,6 +11,7 @@
       var $flatModel;
       var $hdbDescription;
       var $date;
+      var $nric;
       
       /* Member functions */
       /* Place holder for now do we really need this thing called entity??*/
@@ -56,12 +57,16 @@
          return $this->address;
       }
 
+      function setNric($nric){
+         $this->nric = $nric;
+
+      }
 
 
       function createFlatsTable(){
 
          $createTableSQL = 
-            "CREATE TABLE uploadedFlats(
+            "CREATE TABLE resaleflat(
 
                ID int AUTO_INCREMENT PRIMARY KEY, 
                address text,
@@ -85,10 +90,18 @@
       }
 
       function getInsertSQL(){
-         $insertFlatSQL = "INSERT INTO uploadedFlats(address, town, floorarea, storey, leaseCommence, askingPrice, flatType, flatModel, hdbDescription, dateSubmitted) 
-             VALUES ('$this->address', '$this->town', '$this->floorarea', '$this->storey', '$this->leaseCommence', '$this->askingPrice', '$this->flatType', '$this->flatModel', '$this->hdbDescription', '$this->date')";     
+
+         $insertFlatSQL = "INSERT INTO `resaleflat` (`town`, `flatType`, `address`, `storey`, `floorArea`, `flatModel`, `leaseCommenceDate`, `price`, `ownerNRIC`, `uploadDate`, `imgUrl`, `hdbDescription`)
+             VALUES ('$this->town', '$this->flatType', '$this->address', '$this->storey', '$this->floorarea', '$this->flatModel', '$this->leaseCommence', '$this->askingPrice', '$this->nric' ,'$this->date', 'NULL' , '$this->hdbDescription' )";     
          
          return $insertFlatSQL;
+      }
+
+      function getAlterSQL(){
+
+         $alterSQL = "UPDATE `resaleflat` SET `town` = '$this->town', `flatType` = '$this->flatType', `address` = '$this->address', `storey` = '$this->storey', `floorArea` = '$this->floorarea', `flatModel` = '$this->flatModel', `leaseCommenceDate` = '$this->leaseCommence', `price` = '$this->askingPrice', `uploadDate` = '$this->date', `imgUrl` = 'NULL', `hdbDescription` = '$this->hdbDescription' WHERE `resaleflat`.`ownerNric` = '$this->nric';";
+
+         return $alterSQL;
       }
    }
 ?>
