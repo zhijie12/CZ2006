@@ -37,9 +37,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						$userProfile->setOccupation($row['occupation']);
 						$userProfile->setIncome($row['income']);
 						$userProfile->setCitizenship($row['citizenship']);
-						$userProfile->setFlatEligibility($row['flatEligibility']);
 						$userProfile->setProfileURL($row['profileUrl']);
 						$userProfile->setNric($user);
+						$userProfile->setEmploymentStatus($row['employmentStatus']);
+						$userProfile->setMOPStatus($row['MOPStatus']);
+						$userProfile->setHDBOwnership($row['hdbOwnership']);
+						$userProfile->setMartialStatus($row['maritalStatus']);
 
 					}else{
 						$userProfile->setNric("nil");

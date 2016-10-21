@@ -22,9 +22,6 @@
     $flatType = $row['flatType'];
     $flatModel= $row['flatModel'];
     $hdbDescription= $row['hdbDescription'];
-
-    
-
 ?>
 <!DOCTYPE html>
 <html>

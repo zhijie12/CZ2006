@@ -1,4 +1,14 @@
-<?php include("sideMenu.php") ?>
+<?php include("header.php") ?>
+<style type="text/css">
+    /*Add your own styles here.*/
+</style>
+<script type="text/javascript">
+    //Add your own scripts here
+</script>
+</head>
+
+<body class="flat-blue">
+<?php include("menu.php") ?>
  <!-- Main Content -->
             <div class="container-fluid">
                 <div class="side-body">
@@ -15,6 +25,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
+                        </div>
                                 </div>
                             </div>
                         </div>

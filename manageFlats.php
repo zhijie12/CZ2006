@@ -1,31 +1,13 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Harmonious Living @ NTU</title>
-    <link rel="shortcut icon" type="image/x-icon" href="icons/logo(S).png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
-    <style>
-       @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");</style>
-       <!-- CSS Libs -->
-       <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-       <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-       <link rel="stylesheet" type="text/css" href="css/animate.min.css">
-       <link rel="stylesheet" type="text/css" href="css/bootstrap-switch.min.css">
-       <link rel="stylesheet" type="text/css" href="css/checkbox3.min.css">
-       <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
-       <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap.css">
-       <link rel="stylesheet" type="text/css" href="css/select2.min.css">
-       <!-- CSS App -->
-       <link rel="stylesheet" type="text/css" href="css/style.css">
-       <link rel="stylesheet" type="text/css" href="css/flat-blue.css">
-   </head>
-
-   <body class="flat-blue">
-<?php include("sideMenu.php") ?>
+<?php include("header.php") ?>
+<style type="text/css">
+    /*Add your own styles here.*/
+</style>
+<script type="text/javascript">
+    //Add your own scripts here
+</script>
+</head>
+<body class="flat-blue">
+<?php include("menu.php") ?>
             <!-- Main Content -->
             <div class="container-fluid">
                 <div class="side-body">
