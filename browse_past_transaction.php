@@ -52,6 +52,7 @@ function search(){
 			data: "action="+action+"&town="+town+"&flatType="+flatType+"&month="+month+""
 		}).done(function(result) {
 			records = JSON.parse(result);
+			console.log(records);
 			var rows = records.data;
 			table.clear().draw();
 			table.rows.add(rows).draw();

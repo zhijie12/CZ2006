@@ -123,7 +123,7 @@
                                 <!--End of dropdown-->
                                 <!-- View Past Listings  -->
                             <li>
-                                <a href="http://facebook.com">
+                                <a href="browse_past_transaction.php">
                                     <span class="icon glyphicon glyphicon-stats"></span><span class="title">Browse Past Trends</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
