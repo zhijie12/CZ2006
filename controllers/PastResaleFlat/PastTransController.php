@@ -1,7 +1,6 @@
 <?php 
 include("../config.php");
 session_start();
-
 if($_SERVER["REQUEST_METHOD"] == "GET") {
 	if($_GET["action"]=="getSelectOptions"){
 		$value;
@@ -43,23 +42,22 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 	}
 	if($_GET["action"]=="search"){
 		$sql = "SELECT * FROM pastresaleflattransaction ";
-		$sql = "SELECT * FROM pastresaleflattransaction where town='$_GET[town]' AND month='$_GET[month]' AND flatType='$_GET[flatType]' ORDER BY month";
+		//$sql = "SELECT * FROM pastresaleflattransaction where town='$_GET[town]' AND month='$_GET[month]' AND flatType='$_GET[flatType]' ORDER BY month";
 		if($_GET["town"]!=""){
 			$where = "";
 			if($_GET["town"]!="all"){
-				$where = "town='$_GET[town]'";
-			}
-			if($_GET["flatType"]=="all"){
-				$sql = "SELECT * FROM pastresaleflattransaction where town='$_GET[town]' AND month='$_GET[month]' ORDER BY month";
-			}
-			if($_GET["month"]=="all"){
-				$sql = "SELECT * FROM pastresaleflattransaction where town='$_GET[town]' AND flatType='$_GET[flatType]' ORDER BY month";
-			}
-			$sql = "SELECT * FROM pastresaleflattransaction where town='$_GET[town]' AND month='$_GET[month]' AND flatType='$_GET[flatType]' ORDER BY month";
+				$town = "town='$_GET[town]'";
+			}else{$town = "(1=1)";}
+			if($_GET["flatType"]!="all"){
+				$flatType = "flatType='$_GET[flatType]'";
+			}else{$flatType = "(1=1)";}
+			if($_GET["month"]!="all"){
+				$month = "month='$_GET[month]'";
+			}else{$month = "(1=1)";}
+			$sql = $sql." where ".$town." AND ".$flatType." AND ".$month. " ORDER BY MONTH";
 		}else{
 			$sql = "SELECT * FROM pastresaleflattransaction ORDER BY month DESC LIMIT 50";
 		}
-		
 		$result = $mysql->query($sql);
 		$array = mysqli_fetch_all($result,MYSQLI_NUM);
 		$final = array("draw"=>1,"recordsTotal"=>count($array),"recordsFiltered"=>count($array),"data"=>$array);

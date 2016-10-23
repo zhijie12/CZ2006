@@ -40,6 +40,19 @@
                                                    <i class=\"fa fa-times-circle\"></i>
                                                      Your Profile has not been saved successfully.
                                                 </div>";
+                                        }else if($incomingArr[0]=='familyProfile' && $incomingArr[1]=='s'){
+                                            echo "
+                                             <div class=\"isa_success\">
+                                                 <i class=\"fa fa-check\"></i>
+                                                 Your Family Profile has been saved successfully.
+                                            </div>
+                                                ";
+
+                                        }else if($incomingArr[0]=='familyProfile' && $incomingArr[1]=='f'){
+                                            echo "<div class=\"isa_error\">
+                                                   <i class=\"fa fa-times-circle\"></i>
+                                                     Your Family Profile has not been saved successfully.
+                                                </div>";
                                         }
                                         $array=array('nil','nil');
                                         $_SESSION["fromWhere"] = $array;

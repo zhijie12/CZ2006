@@ -10,11 +10,9 @@
       var $income;
       var $citizenship;
       var $nric;
-      var $profileURL;            
-      var $employmentStatus;
+      var $profileURL;
       var $MOPStatus;
       var $hdbOwnership;
-      var $maritalStatus;
 
       
       /* Member functions */
@@ -96,14 +94,6 @@
          return $this->citizenship;
       }
 
-      function setEmploymentStatus($employmentStatus){
-         $this->employmentStatus = $employmentStatus;
-      }
-
-      function getEmploymentStatus(){
-         return $this->employmentStatus;
-      }
-
       function setMOPStatus($MOPStatus){
          $this->MOPStatus = $MOPStatus;
       }
@@ -118,16 +108,9 @@
          return $this->hdbOwnership;
       }
 
-      function setMartialStatus($maritalStatus){
-         $this->maritalStatus = $maritalStatus;
-      }    
-      function getMartialStatus(){
-         return $this->maritalStatus;
-      }
-
       function getInsertSQL(){
-         $sql = "INSERT INTO `mainapplicant` (`nric`, `contactNo`, `name`, `address`, `postalCode`, `dateOfBirth`, `occupation`, `income`, `citizenship`, `employmentStatus`, `profileUrl`, `MOPStatus`, `hdbOwnership`, `maritalStatus`) VALUES
-            ('$this->nric', $this->contactnumber, '$this->fullname', '$this->address', $this->postalcode, '$this->dateofbirth', '$this->occupation', $this->income, '$this->citizenship', '$this->employmentStatus', '$this->profileURL',$this->MOPStatus, '$this->hdbOwnership', '$this->maritalStatus', )";
+         $sql = "INSERT INTO `mainapplicant` (`nric`, `contactNo`, `name`, `address`, `postalCode`, `dateOfBirth`, `occupation`, `income`, `citizenship`, `profileUrl`, `MOPStatus`, `hdbOwnership`) VALUES
+            ('$this->nric', $this->contactnumber, '$this->fullname', '$this->address', $this->postalcode, '$this->dateofbirth', '$this->occupation', $this->income, '$this->citizenship',  '$this->profileURL',$this->MOPStatus, '$this->hdbOwnership')";
          return $sql;
       }
       function checkProfileQuery(){

@@ -14,8 +14,10 @@
             var vpostalcode = document.getElementsByName("postalcode")[0].value;
             var vincome = document.getElementsByName("income")[0].value;
             var vcitizenship = document.getElementsByName("citizenship")[0].value;
-            var vflageligibility = document.getElementsByName("flageligibility")[0].value;
+            var voccupation = document.getElementsByName("occupation")[0].value;
             var vprofilepicture = document.getElementsByName("profilepicture")[0].value;
+            var vmop = document.getElementsByName("mop")[0].value;
+            var vhdbOwner = document.getElementsByName("hdbOwnership")[0].value;
             if (vnric == null || vnric == "") {
                 outputMsg=outputMsg + "- NRIC field is empty<br />";
             }
@@ -40,12 +42,17 @@
             if (vpostalcode == null || vpostalcode == "") {
                 outputMsg=outputMsg + "- Postal Code field is empty <br />";
             }
+            if (voccupation == null || voccupation == "") {
+                outputMsg=outputMsg + "- occupation field is empty<br />";
+            }
             if (vincome == null || vincome == "") {
                 outputMsg=outputMsg + "- Income field is empty<br />";
             }
-
-            if (vflageligibility == null || vflageligibility == "") {
-                outputMsg=outputMsg +  "- Flat Eligibility  field is empty<br />";
+            if (vmop == null || vmop == "") {
+                outputMsg=outputMsg + "- Current Home Occupation Duration field is empty<br />";
+            }
+            if (vhdbOwner == null || vhdbOwner == "") {
+                outputMsg=outputMsg + "- hdbOwnership field is not selected<br />";
             }
 
             if(outputMsg == null || outputMsg == ""){
@@ -206,9 +213,40 @@
                                             echo "";
                                         ?>">
                                     </div>
-                                 <div class="sub-title">Income Celling: </div>
+                                 <div class="sub-title">Current Home Occupation Duration (Current House) :</div>
+                                 <input type="text" name="mop" class="form-control" placeholder="Enter your current occupation period." value="<?php 
+                                        if($userProfile->getNric()!='nil'){
+                                           echo $userProfile->getMOPStatus();
+                                        }else
+                                            echo "";
+                                        ?>">
                                     <div>
-                                        <input type="text" name="flatEligibility" class="form-control"  placeholder="Not Applicable" value="NA" readOnly="true">
+                                 <div class="sub-title">HDB Ownership:</div>
+                                 <div class="radio3">
+                             <input type="radio" id="radio5" name="hdbOwnership" value="yes"
+                                    <?php 
+                                        if($userProfile->getNric()!='nil' && $userProfile->gethdbOwnership()=='yes' ){
+                                           echo "checked";
+                                        }else
+                                            echo "";
+                                        ?>>
+                                          <label for="radio5">
+                                             Yes
+                                          </label>
+                                        </div>
+                                        <div class="radio3">
+                                          <input type="radio" id="radio6" name="hdbOwnership" value="no"
+                                          <?php 
+                                        if($userProfile->getNric()!='nil' && $userProfile->gethdbOwnership()=='no' ){
+                                           echo "checked";
+                                        }else
+                                            echo "";
+                                        ?>>
+                                          <label for="radio6">
+                                            No
+                                          </label>
+                                    <div>
+
                                     </div>
                                     <div class="sub-title"></div>
                                     <div>

@@ -4,18 +4,15 @@
 		display:none !important;
 	}
 </style>
-<script type="text/javascript" src="js/Chart.js"></script>
 <script type="text/javascript">
 var table;
 var url;
 var records;
-var options;
-
 $(document).ready(function() {
 	$.ajax({
 		url: "controllers/PastResaleFlat/PastTransController.php?action=getSelectOptions",
 	}).done(function(result) {
-		 options = JSON.parse(result);
+		var options = JSON.parse(result);
 		console.log(options);
 		for(var i=0;i<options.Month.length;i++){
 			$("select[name='month']").append("<option value='"+options.Month[i]+"'>"+options.Month[i]+"</option>");
@@ -54,15 +51,14 @@ function search(){
 			url: "controllers/PastResaleFlat/PastTransController.php",
 			data: "action="+action+"&town="+town+"&flatType="+flatType+"&month="+month+""
 		}).done(function(result) {
-			records = JSON.parse(result);
-			console.log(records);
+			console.log(result);
+			/*records = JSON.parse(result);
 			var rows = records.data;
 			table.clear().draw();
-			table.rows.add(rows).draw();
+			table.rows.add(rows).draw();*/
 		});
 	}
 }
-
 </script>
 </head>
 
@@ -100,13 +96,12 @@ function search(){
 									</select>
 								</div>
 								<div class="col-sm-2">
-									<label for="flatType">Flat Type:</label>
+									<label for="flatType">flat type:</label>
 									<select name="flatType" style="width:200px" >
 										<option value="all">all</option>
 									</select>
 									
 								</div>
-								</br>
 								<div class="col-sm-2">
 									<input type="button" class="btn btn-default" onclick="search()" value="Search">
 								</div>
@@ -115,33 +110,33 @@ function search(){
 						</div>
 						<div class="row">
 							<div class="col-xs-8">
-								<table id="resultTable" class="display" style="width:100%px;">
+								<table id="resultTable" class="display">
 									<thead>
 										<tr>
 											<th>Month</th>
 											<th>Town</th>
-											<th>Flat Type</th>
-											<th>Block</th>
 											<th>Street Name</th>
-											<th>Storey Range</th>
-											<th>Floor Area</th>
+											<th>Block</th>
 											<th>Flat Model</th>
+											<th>Flat Type</th>
+											<th>Floor Area</th>
+											<th>Storey Range</th>
 											<th>Lease Commence Date</th>
-											<th>Resale Price ($)</th>
+											<th>Resale Price</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
 											<th>Month</th>
 											<th>Town</th>
-											<th>Flat Type</th>
-											<th>Block</th>
 											<th>Street Name</th>
-											<th>Storey Range</th>
-											<th>Floor Area</th>
+											<th>Block</th>
 											<th>Flat Model</th>
+											<th>Flat Type</th>
+											<th>Floor Area</th>
+											<th>Storey Range</th>
 											<th>Lease Commence Date</th>
-											<th>Resale Price ($)</th>
+											<th>Resale Price</th>
 										</tr>
 									</tfoot>
 								</table>
@@ -152,7 +147,6 @@ function search(){
 								<div class="card-title">
 									<div class="title">Statistics</div>
 								</div>
-									<canvas id="myChart" width="200" height="200"></canvas>
 							</div>
 						</div>
 					</div>
@@ -160,67 +154,5 @@ function search(){
 			</div>
 		</div>
 	</div>
-</div>
-<script>
-//SELECT `flatType`,`month`,AVG(`resalePrice`) FROM `pastresaleflattransaction` Where `town` ='BEDOK' GROUP BY `flatType`,`month` Order BY `month` DESC
-	var ctx = document.getElementById("myChart");
-	var myChart = new Chart(ctx, {
-	    type: 'line',
-	    data: {
-	        labels: ["January", "February", "March", "April", "May", "June", "July"],
-	        datasets: [{
-	            label: "My First dataset",
-	            fill: true,
-	            lineTension: 0.1,
-	            backgroundColor: "rgba(0, 255, 0, 0.3)",
-	            borderColor: "blue",
-	            borderCapStyle: 'butt',
-	            borderDash: [],
-	            borderDashOffset: 0.0,
-	            borderJoinStyle: 'miter',
-	            pointBorderColor: "rgba(75,192,192,1)",
-	            pointBackgroundColor: "#fff",
-	            pointBorderWidth: 1,
-	            pointHoverRadius: 40,
-	            pointHoverBackgroundColor: "rgba(75,192,192,1)",
-	            pointHoverBorderColor: "rgba(220,220,220,1)",
-	            pointHoverBorderWidth: 2,
-	            pointRadius: 1,
-	            pointHitRadius: 10,
-	            data: [65, 59, 80, 81, 56, 55, 40],
-	            spanGaps: false,
-	        },{
-				label: "My Second dataset",
-	            fill: true,
-	            lineTension: 0.1,
-	            backgroundColor: "rgba(0, 0, 255, 0.3)",
-	            borderColor: "blue",
-	            borderCapStyle: 'butt',
-	            borderDash: [],
-	            borderDashOffset: 0.0,
-	            borderJoinStyle: 'miter',
-	            pointBorderColor: "red",
-	            pointBackgroundColor: "#fff",
-	            pointBorderWidth: 1,
-	            pointHoverRadius: 40,
-	            pointHoverBackgroundColor: "rgba(75,192,192,1)",
-	            pointHoverBorderColor: "rgba(220,220,220,1)",
-	            pointHoverBorderWidth: 2,
-	            pointRadius: 30,
-	            pointHitRadius: 10,
-	            data: [10, 29, 30, 41, 56, 65, 40],
-	            spanGaps: false,
-	        }]
-	    },
-	    options: {
-	        scales: {
-	            yAxes: [{
-	                ticks: {
-	                    beginAtZero:true
-	                }
-	            }]
-	        }
-	    }
-	});
-</script>  
+</div>             
 <?php include("footer.php") ?>

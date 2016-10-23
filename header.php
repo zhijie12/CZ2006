@@ -13,7 +13,11 @@
     if($page == "home.php"){
         $pageTitle="Welcome Back!";
     }else if($page == "userProfile.php"){
-        $pageTitle = "Home -> <span> Manage Profile </span>";
+        $pageTitle = "Home -> My Profile ";
+    }else if($page == "browse_past_transaction.php"){
+        $pageTitle = "Home -> Browse Past Transactions";
+    }   else if($page == "coApplicant.php"){
+        $pageTitle = "Home -> My Family Profile";
     }
 ?>
 <!DOCTYPE html>

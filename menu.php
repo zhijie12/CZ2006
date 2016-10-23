@@ -59,7 +59,9 @@
                                          ?></h4>
                                         <p><?php echo $_SESSION['userEmail']; ?> </p>
                                         <div class="btn-group margin-bottom-2x" role="group">
+                                        <a href="userprofile.php">
                                             <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
+                                            </a>
                                            <a href="index.php">
                                             <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
                                             </a>
@@ -97,16 +99,30 @@
                             </li>
                             <!--HarmoniousDB tabs-->
                                                         <!-- View Profile  -->
-                            <li 
+
+                            <li
                             <?php 
-                            if($page=="userProfile.php"){
+                            if($page=="userProfile.php" || $page =="coApplicant.php"){
                              echo "class=\"active\"";
+                            }else{
+                                echo "class=\"panel panel-default dropdown\"";
                             }
                             ?>
                             >
-                                <a href="userProfile.php">
-                                    <span class="icon glyphicon glyphicon-user"></span><span class="title">Manage My Profile</span>
+                                <a data-toggle="collapse" href="#dropdown-element1">
+                                    <span class="icon glyphicon glyphicon-user"></span><span class="title">Profile</span>
                                 </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-element1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="userProfile.php"><span class= "icon glyphicon glyphicon-user"></span> My Profile</a>
+                                            </li>
+                                            <li><a href="coApplicant.php"><span class= "icon glyphicon glyphicon-home"></span>My Family Profile</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </li>
                                 <!--End of dropdown-->  
                             <!-- ViewCurrent  -->
@@ -122,8 +138,13 @@
                             </li>
                                 <!--End of dropdown-->
                                 <!-- View Past Listings  -->
-                            <li>
-                                <a href="http://facebook.com">
+                            <li
+                            <?php 
+                            if($page =="browse_past_transaction.php"){
+                             echo "class=\"active\"";
+                            }?>
+                            >
+                                <a href="browse_past_transaction.php">
                                     <span class="icon glyphicon glyphicon-stats"></span><span class="title">Browse Past Trends</span>
                                 </a>
                                 <!-- Dropdown level 1 -->

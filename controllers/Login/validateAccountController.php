@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					if($num_rows>0){
 						//if profile is created.
 						$userProfile->setContactNumber($row['contactNo']);
-						$userProfile->setFullName($row['fullName']);
+						$userProfile->setFullName($row['name']);
 						$userProfile->setAddress($row['address']);
 						$userProfile->setDateOfBirth($row['dateOfBirth']);
 						$userProfile->setPostalCode($row['postalCode']);
@@ -39,10 +39,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						$userProfile->setCitizenship($row['citizenship']);
 						$userProfile->setProfileURL($row['profileUrl']);
 						$userProfile->setNric($user);
-						$userProfile->setEmploymentStatus($row['employmentStatus']);
 						$userProfile->setMOPStatus($row['MOPStatus']);
 						$userProfile->setHDBOwnership($row['hdbOwnership']);
-						$userProfile->setMartialStatus($row['maritalStatus']);
 
 					}else{
 						$userProfile->setNric("nil");
@@ -62,7 +60,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				exit();
 			}
 		}else{
-
 			header("Location: ../../index.php?error=e4");
 			exit();
 		}
