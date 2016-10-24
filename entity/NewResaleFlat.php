@@ -12,6 +12,7 @@
       var $hdbDescription;
       var $date;
       var $nric;
+      var $img = NULL;
       
       /* Member functions */
       /* Place holder for now do we really need this thing called entity??*/
@@ -62,27 +63,34 @@
 
       }
 
-
-      function createFlatsTable(){
-
-         $createTableSQL = 
-            "CREATE TABLE resaleflat(
-
-               ID int AUTO_INCREMENT PRIMARY KEY, 
-               address text,
-               town text,
-               floorarea text,
-               storey text,
-               leaseCommence text,
-               askingPrice text,
-               flatType text,
-               flatModel text,
-               hdbDescription text,
-               dateSubmitted date
-            )";
-            
-            return $createTableSQL;
+      function setImage($img){
+         $this->img = $img;
       }
+
+      function getImage(){
+         return $this->img;
+      }
+
+      // function createFlatsTable(){
+
+      //    $createTableSQL = 
+      //       "CREATE TABLE resaleflat(
+
+      //          ID int AUTO_INCREMENT PRIMARY KEY, 
+      //          address text,
+      //          town text,
+      //          floorarea text,
+      //          storey text,
+      //          leaseCommence text,
+      //          askingPrice text,
+      //          flatType text,
+      //          flatModel text,
+      //          hdbDescription text,
+      //          dateSubmitted date
+      //       )";
+            
+      //       return $createTableSQL;
+      // }
 
       function getFlatsSQL(){
          $getFlatsSQL = "";
@@ -92,14 +100,14 @@
       function getInsertSQL(){
 
          $insertFlatSQL = "INSERT INTO `resaleflat` (`town`, `flatType`, `address`, `storey`, `floorArea`, `flatModel`, `leaseCommenceDate`, `price`, `ownerNRIC`, `uploadDate`, `imgUrl`, `hdbDescription`)
-             VALUES ('$this->town', '$this->flatType', '$this->address', '$this->storey', '$this->floorarea', '$this->flatModel', '$this->leaseCommence', '$this->askingPrice', '$this->nric' ,'$this->date', 'NULL' , '$this->hdbDescription' )";     
+             VALUES ('$this->town', '$this->flatType', '$this->address', '$this->storey', '$this->floorarea', '$this->flatModel', '$this->leaseCommence', '$this->askingPrice', '$this->nric' ,'$this->date', '$this->img' , '$this->hdbDescription' )";     
          
          return $insertFlatSQL;
       }
 
       function getAlterSQL(){
 
-         $alterSQL = "UPDATE `resaleflat` SET `town` = '$this->town', `flatType` = '$this->flatType', `address` = '$this->address', `storey` = '$this->storey', `floorArea` = '$this->floorarea', `flatModel` = '$this->flatModel', `leaseCommenceDate` = '$this->leaseCommence', `price` = '$this->askingPrice', `uploadDate` = '$this->date', `imgUrl` = 'NULL', `hdbDescription` = '$this->hdbDescription' WHERE `resaleflat`.`ownerNric` = '$this->nric';";
+         $alterSQL = "UPDATE `resaleflat` SET `town` = '$this->town', `flatType` = '$this->flatType', `address` = '$this->address', `storey` = '$this->storey', `floorArea` = '$this->floorarea', `flatModel` = '$this->flatModel', `leaseCommenceDate` = '$this->leaseCommence', `price` = '$this->askingPrice', `uploadDate` = '$this->date', `imgUrl` = '$this->img', `hdbDescription` = '$this->hdbDescription' WHERE `resaleflat`.`ownerNric` = '$this->nric';";
 
          return $alterSQL;
       }

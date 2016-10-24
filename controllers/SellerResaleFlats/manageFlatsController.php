@@ -33,6 +33,8 @@ $NewResaleFlat = new NewResaleFlat();
 			}
 		}
 */
+
+
 		if (!empty($_POST['address']) && !empty($_POST['town']) && !empty($_POST['floorarea']) 
 			&& !empty($_POST['storey']) && !empty($_POST['leaseCommence']) && !empty($_POST['askingPrice']) 
 			&& !empty($_POST['flatType']) && !empty($_POST['flatModel']) && !empty($_POST['hdbDescription'])){
@@ -50,6 +52,17 @@ $NewResaleFlat = new NewResaleFlat();
 		date_default_timezone_set('Asia/Singapore');		
 		$date = date('Y-m-d');
 
+		//Upload image
+		$target_dir = "../../IMG/hdbImage/";
+		$target_file = $target_dir . basename($_FILES["hdbImage"]["name"]);
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		if (move_uploaded_file($_FILES["hdbImage"]["tmp_name"], $target_file)) {
+		    //echo "The file ". basename( $_FILES["hdbImage"]["name"]). " has been uploaded.";
+		} else {
+		    //echo "Sorry, there was an error uploading your file.";
+		}
+
+		$NewResaleFlat->setImage("IMG/hdbImage/".basename($_FILES["hdbImage"]["name"]));
 		$NewResaleFlat->setAddress($address);
 		$NewResaleFlat->setTown($town);
 		$NewResaleFlat->setFloorArea($floorarea);
@@ -70,7 +83,11 @@ $NewResaleFlat = new NewResaleFlat();
 		}else { //Already exist edit current value
 			$mysql->query($alterSQL);
 		}
-		header("Location: ../../uploadFlats.php");
+
+		
+
+
+		header("Location: ../../manageFlats.php");
 	}else{ //redirect back to the form
 
 	}
