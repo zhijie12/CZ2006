@@ -128,11 +128,11 @@
                             <!-- ViewCurrent  -->
                             <li
                             <?php 
-                            if($page=="uploadFlats.php" || $page =="compareHDB.php"){
+                            if($page=="browseHDB.php"){
                              echo "class=\"active\"";
                             }?>
                             >
-                                <a href="http://www.google.com">
+                                <a href="browseHDB.php">
                                     <span class="icon glyphicon glyphicon-search"></span><span class="title">Browse Resale HDB</span>
                                 </a>
                             </li>
