@@ -53,16 +53,18 @@
 				$userProfile->setHDBOwnership(mysqli_real_escape_string($mysql,strtolower($_POST['hdbOwnership'])));
 
 				$sql= $userProfile->getInsertSQL();
+				echo $sql;
 				if ($mysql->query($sql)==true) {
 						//echo "Success";
+						echo $sql;
 						$_SESSION['userProfile'] = serialize($userProfile);
 						$array=array('userProfile','s');
 						$_SESSION["fromWhere"] = $array;
-						header("Location: ../../home.php");
+					//	header("Location: ../../home.php");
 				}else{
 						$array=array('userProfile','f');
 						$_SESSION["fromWhere"] = $array;
-						header("Location: ../../home.php");
+						//header("Location: ../../home.php");
 				}
 				
 			}else{
