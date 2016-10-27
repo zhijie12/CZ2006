@@ -7,7 +7,6 @@
         display:none !important;
     }
 </style>
-<script src="https://code.highcharts.com/highcharts.js"></script>
 <script type="text/javascript">
     //Add your own scripts here
     $( document ).ready(function() { //ON READY
@@ -49,32 +48,38 @@
                             <table id="browseHDB" class="display">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
+                                        <th>Image</th>
                                         <th>Town</th>
-                                        <th>Flat Type</th>
                                         <th>Address</th>
+                                        <th>Flat Type</th>
+                                        <th>Flat Model</th>                                        
                                         <th>Storey</th>
-                                        <th>Floor Area</th>
-                                        <th>Flat Model</th>
+                                        <th>Floor Area</th>                                   
                                         <th>Lease Commence Date</th>
                                         <th>Price</th>
                                         <th>Owner</th>
-                                        <th>Upload Date</th>
-                                        <th>Image</th>
+                                        <th>Upload Date</th>                                        
+                                        <th>HDB Description</th>
+                                        <th>Offer</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
+                                        <th>ID</th>
+                                        <th>Image</th>
                                         <th>Town</th>
-                                        <th>Flat Type</th>
                                         <th>Address</th>
+                                        <th>Flat Type</th>
+                                        <th>Flat Model</th>                                        
                                         <th>Storey</th>
-                                        <th>Floor Area</th>
-                                        <th>Flat Model</th>
+                                        <th>Floor Area</th>                                   
                                         <th>Lease Commence Date</th>
                                         <th>Price</th>
                                         <th>Owner</th>
-                                        <th>Upload Date</th>
-                                        <th>Image</th>
+                                        <th>Upload Date</th>                                        
+                                        <th>HDB Description</th>
+                                        <th>Offer</th>                                        
                                     </tr>
                                 </tfoot>
                             </table>
