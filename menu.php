@@ -150,21 +150,29 @@
                                 <!-- Dropdown level 1 -->
                             </li>
                                 <!--End of dropdown-->      
+                            
                             <!-- View Past Listings  -->
+                            <!--
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-element">
                                     <span class="icon glyphicon glyphicon-list-alt"></span><span class="title">View My Listings</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
-                                <div id="dropdown-element" class="panel-collapse collapse">
+                                <!--<div id="dropdown-element" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="manageFlats.php"><span class= "icon glyphicon glyphicon-circle-arrow-up"></span>Upload My HDB</a>
-                                            </li>
+                                        <ul class="nav navbar-nav">-->
+                                    <li
+                                            <?php 
+                                            if($page =="manageFlats.php"){
+                                             echo "class=\"active\"";
+                                         }?>
+                                         ><a href="manageFlats.php"><span class= "icon glyphicon glyphicon-circle-arrow-up"></span><span class="title">Upload My HDB</span></a>
+                                    </li>
+                                        <!--
                                         </ul>
                                     </div>
-                                </div>
-                            </li>
+                                </div> -->
+                            <!-- </li> -->
                                 <!--End of dropdown-->        
                         </ul>
                     </div>
