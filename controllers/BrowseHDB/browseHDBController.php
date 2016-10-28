@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 		$resultarray = mysqli_fetch_all($result,MYSQLI_NUM);
 		
 		$sql2 = "select ownerNRIC, r.resaleID, buyerOffer from 
-		resaleflat r inner join concludeDeal c 
+		resaleflat r left join concludeDeal c 
 		on r.resaleID = c.resaleID 
 		AND r.ownerNRIC = c.sellerNRIC 
 		AND '".$buyerNRIC."' = c.buyerNRIC";
