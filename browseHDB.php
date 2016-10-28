@@ -11,22 +11,22 @@
     //Add your own scripts here
     $( document ).ready(function() { //ON READY
         //console.log( "ready!" );
-        $.ajax({
+        url = "controllers/BrowseHDB/browseHDBController.php?action=load";
+        table = table = $("#browseHDB").DataTable({
+                "ajax": url,
+        });
+
+        /*$.ajax({
             url: "controllers/BrowseHDB/browseHDBController.php?action=load",
         }).done(function(result) {
             var options = JSON.parse(result);
             console.log(options);
-            var $row;
-            var $i;
             url = "controllers/BrowseHDB/browseHDBController.php?action=load";
             table = $("#browseHDB").DataTable({
                 "ajax": url,
             });
 
-            for (i=0; i< options.length; i++){
-            //$("table[name='browseHDB']").append("<td>'"+options[i][i]+"'></td>");
-        }
-    });
+    });*/
     });
 </script>
 </head>
@@ -45,10 +45,32 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <table id="browseHDB" class="display">
+                            <?php
+                            $incomingArr = $_SESSION["makeOffer"];  
+                            if($incomingArr[0]=='makeOffer' && $incomingArr[1]=='s'){
+                                echo "
+                                <div class=\"isa_success\">
+                                   <i class=\"fa fa-check\"></i>
+                                   Your offer have been submitted successfully!
+                               </div>";
+                           }else if($incomingArr[0]=='makeOffer' && $incomingArr[1]=='u'){
+                                echo "
+                                <div class=\"isa_success\">
+                                   <i class=\"fa fa-check\"></i>
+                                   Your offer have been updated successfully!
+                               </div>";
+                           }else if($incomingArr[0]=='makeOffer' && $incomingArr[1]=='f'){
+                                echo "
+                                <div class=\"isa_error\">
+                                   <i class=\"fa fa-check\"></i>
+                                   Your offer have failed to submit! Please check your input! 
+                               </div>";
+                           }
+                           $_SESSION["makeOffer"] = null;  //Clear it so it won't keep get stuck! 
+                           ?>
+                           <table id="browseHDB" class="display">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Image</th>     
                                         <th>Address</th>
                                         <th>Flat Type</th>                           
@@ -62,8 +84,7 @@
                                     </tr>
                                 </thead>
                                 <tfoot>
-                                    <tr>
-                                        <th>ID</th>
+                                    <tr>                                        
                                         <th>Image</th>     
                                         <th>Address</th>
                                         <th>Flat Type</th>                           

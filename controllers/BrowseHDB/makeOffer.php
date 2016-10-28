@@ -12,9 +12,22 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 		
 		//Deal Status (buyerPropose/SellerAccept/SellerReject/BuyerAccept)
 
-		$sql = "INSERT into concludeDeal (buyerNRIC, buyerOffer, dealStatus, resaleID, sellerNRIC, dateStarted)
+		$insertSQL = "INSERT into concludeDeal (buyerNRIC, buyerOffer, dealStatus, resaleID, sellerNRIC, dateStarted)
 		VALUES ('".$buyerNRIC."', ".$proposeOffer.", 'buyerOffer', '".$resaleID."', '".$sellerNRIC."', NOW())";
-		echo $sql;
+		
+		$updateSQL = "update concludeDeal set buyerOffer=".$proposeOffer." where resaleID=".$resaleID." AND sellerNRIC = '".$sellerNRIC."' AND buyerNRIC = '".$buyerNRIC."'";
+		if ($mysql->query($insertSQL)==true){ 
+			$array=array('makeOffer','s');
+
+		}else if ($mysql->query($updateSQL)==true){
+			$array=array('makeOffer','u');			
+		}else { 
+			$array=array('makeOffer','f');			
+		}
+		
+		//echo $updateSQL;
+		$_SESSION["makeOffer"] = $array;
+		header("Location: ../../browseHDB.php");			
 	}
 }
 ?>
