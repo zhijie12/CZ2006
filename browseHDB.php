@@ -49,17 +49,14 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Image</th>
-                                        <th>Town</th>
+                                        <th>Image</th>     
                                         <th>Address</th>
-                                        <th>Flat Type</th>
-                                        <th>Flat Model</th>                                        
+                                        <th>Flat Type</th>                           
                                         <th>Storey</th>
                                         <th>Floor Area</th>                                   
                                         <th>Lease Commence Date</th>
                                         <th>Price</th>
-                                        <th>Owner</th>
-                                        <th>Upload Date</th>                                        
+                                        <th>Owner</th>                          
                                         <th>HDB Description</th>
                                         <th>Offer</th>
                                     </tr>
@@ -67,19 +64,16 @@
                                 <tfoot>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Image</th>
-                                        <th>Town</th>
+                                        <th>Image</th>     
                                         <th>Address</th>
-                                        <th>Flat Type</th>
-                                        <th>Flat Model</th>                                        
+                                        <th>Flat Type</th>                           
                                         <th>Storey</th>
                                         <th>Floor Area</th>                                   
                                         <th>Lease Commence Date</th>
                                         <th>Price</th>
-                                        <th>Owner</th>
-                                        <th>Upload Date</th>                                        
+                                        <th>Owner</th>                          
                                         <th>HDB Description</th>
-                                        <th>Offer</th>                                        
+                                        <th>Offer</th>
                                     </tr>
                                 </tfoot>
                             </table>
