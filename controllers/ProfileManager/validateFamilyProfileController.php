@@ -1,6 +1,7 @@
 <?php
-include("../config.php");
-	include("../../entity/FamilyProfile.php");
+include_once("../config.php");
+include_once("../../entity/FamilyProfile.php");
+include_once("validateEligibilityStatusController.php");
 session_start();
 if($_SERVER["REQUEST_METHOD"] == "GET") {
 	if($_GET["action"]=="getCurrentInfo"){
@@ -44,7 +45,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 	if ($mysql->query($sql)==true) {
 		//echo "Success";
 		//$_SESSION['userProfile'] = serialize($userProfile);
-		$array=array('familyProfile','s');
+		$eligibilitystatus = checkEligibility($mysql);
+		$array=array('familyProfile','s',$eligibilitystatus);
 		$_SESSION["fromWhere"] = $array;
 		header("Location: ../../home.php");
 	}else{

@@ -1,6 +1,7 @@
 <?php
-	include("../config.php");
-	include("../../entity/UserProfile.php");
+	include_once("../config.php");
+	include_once("../../entity/UserProfile.php");
+	include_once("validateEligibilityStatusController.php");
 	session_start();
 	$userProfile = new UserProfile();
 	$previous= unserialize($_SESSION['userProfile']);
@@ -56,15 +57,16 @@
 				echo $sql;
 				if ($mysql->query($sql)==true) {
 						//echo "Success";
-						echo $sql;
+						$eligibilitystatus = checkEligibility($mysql);
+						$array=array('userProfile','s',$eligibilitystatus);
 						$_SESSION['userProfile'] = serialize($userProfile);
-						$array=array('userProfile','s');
+						
 						$_SESSION["fromWhere"] = $array;
-					//	header("Location: ../../home.php");
+						header("Location: ../../home.php");
 				}else{
 						$array=array('userProfile','f');
 						$_SESSION["fromWhere"] = $array;
-						//header("Location: ../../home.php");
+						header("Location: ../../home.php");
 				}
 				
 			}else{

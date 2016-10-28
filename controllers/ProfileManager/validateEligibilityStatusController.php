@@ -1,11 +1,10 @@
 <?php
-	include("../config.php");
-	include("../../entity/UserProfile.php");
-	include("../../entity/FamilyProfile.php");
-	include("../../entity/EligibilityStatus.php");
-	session_start();
+	include_once("../../entity/UserProfile.php");
+	include_once("../../entity/FamilyProfile.php");
+	include_once("../../entity/EligibilityStatus.php");
 	function checkEligibility($mysql){
 		date_default_timezone_set('Asia/Singapore');
+		$table = "<div style='margin-left: 5.5%;'> You are eligible to:<br/><ul>";
 		
 		$mainapplicant = getMainApplicant($mysql);
 		$coapplicant = getCoapplicant($mysql);
@@ -88,14 +87,32 @@
 				}
 			}
 		}
-		
+		if($eligibilitySell){
+			$table = $table."<li>Sell a resale flat</li>";
+		}
+		if($eligibilityBuy){
+			$table = $table."<li>Buy a resale flat</li>";
+		}
+		if($FianceFianceeScheme){
+			$table = $table."<li>For the Fiance Fiancee Scheme</li>";
+		}
+		if($SingleSingaporeCitizen){
+			$table = $table."<li>For the Single Singapore Citizen</li>";
+		}
+		if($SinglesGrant){
+			$table = $table."<li>For the Singles Grant, Grant Amount: \$$SinglesGrantAmount</li>";
+		}
+		if($FirstTimeFamilygrant){
+			$table = $table."<li>For the First Timer Family Grant, Grant Amount: \$$FirstTimeFamilygrantAmount</li>";
+		}
 		
 		$result = array("eligibilityBuy"=>$eligibilityBuy,"eligibilitySell"=>$eligibilitySell,
 						"FianceFianceeScheme"=>$FianceFianceeScheme,"SingleSingaporeCitizen"=>$SingleSingaporeCitizen,
 						"SinglesGrant"=>$SinglesGrant,"SinglesGrantAmount"=>$SinglesGrantAmount,
 						"FirstTimeFamilygrant"=>$FirstTimeFamilygrant,"FirstTimeFamilygrantAmount"=>$FirstTimeFamilygrantAmount);
+		$table = $table."</ul></div>";
 		if(insertStatus($result,$mysql)){
-			return $result;
+			return $table;
 		}else{
 			echo "<br> ERROR";
 		}
@@ -171,5 +188,5 @@
 			return null;
 		}
 	}
-	checkEligibility($mysql);
+	
 ?>

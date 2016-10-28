@@ -27,24 +27,27 @@
                                     Examples of standard form controls. such as input, textarea, select, checkboxes and radios , static control, etc.
                                     <?php
                                         $incomingArr = $_SESSION["fromWhere"];  
+										
                                         if($incomingArr[0]=='userProfile' && $incomingArr[1]=='s'){
+											$eligibility = $incomingArr[2];
                                             echo "
                                              <div class=\"isa_success\">
                                                  <i class=\"fa fa-check\"></i>
-                                                 Your Profile has been saved successfully.
-                                            </div>
-                                                ";
-
+                                                 Your Profile has been saved successfully.<br/>
+												 $eligibility;
+                                            </div>";
                                         }else if($incomingArr[0]=='userProfile' && $incomingArr[1]=='f'){
                                             echo "<div class=\"isa_error\">
                                                    <i class=\"fa fa-times-circle\"></i>
                                                      Your Profile has not been saved successfully.
                                                 </div>";
                                         }else if($incomingArr[0]=='familyProfile' && $incomingArr[1]=='s'){
+											$eligibility = $incomingArr[2];
                                             echo "
                                              <div class=\"isa_success\">
                                                  <i class=\"fa fa-check\"></i>
                                                  Your Family Profile has been saved successfully.
+												 $eligibility;
                                             </div>
                                                 ";
 
