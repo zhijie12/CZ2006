@@ -52,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 	}
 	if($_GET["action"]=="search"){
 		$where = "";
-		$sql = "SELECT * FROM pastresaleflattransaction ";
+		$sql = "SELECT month,town,streetName,block,flatModel,flatType,floorAreaSqm,storeyRange,leaseCommenceDate,resalePrice FROM pastresaleflattransaction ";
 		//$sql = "SELECT * FROM pastresaleflattransaction where town='$_GET[town]' AND month='$_GET[month]' AND flatType='$_GET[flatType]' ORDER BY month";
 		if($_GET["town"]!=""){
 			$where = "";
@@ -81,12 +81,12 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 			$where = " where ".$town." AND ".$flatType." AND ".$month. " AND ".$flatModel." AND ".$LeaseCommenceYear." AND ".$price;
 			$sql = $sql.$where." ORDER BY month DESC";
 		}else{
-			$sql = "SELECT * FROM pastresaleflattransaction ORDER BY month DESC LIMIT 50";
+			$sql = "SELECT month,town,streetName,block,flatModel,flatType,floorAreaSqm,storeyRange,leaseCommenceDate,resalePrice FROM pastresaleflattransaction ORDER BY month DESC LIMIT 50";
 		}
 		//raw data
 		$result = $mysql->query($sql);
 		$resultarray = mysqli_fetch_all($result,MYSQLI_NUM);
-		
+
 		//statistics
 		$sql = "select month,AVG(resalePrice) as AvgPrice, count(*) from pastresaleflattransaction ".$where." GROUP BY month";
 		//print_r($sql);

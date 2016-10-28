@@ -121,7 +121,7 @@ class FamilyProfile{
          return $sql;
       }
       function checkProfileQuery(){
-         $sql="Select * from mainapplicant where NRIC='$this->nric'";
+         $sql="Select * from coapplicant where mainApplicantNRIC='$this->mainapplicantnric'";
          return $sql;
       }
 
