@@ -16,20 +16,15 @@
         //populate the fields
         document.getElementsByName("fullname")[0].value= familyInfo.data[0][0];
         document.getElementsByName("nric")[0].value = familyInfo.data[0][1];
-        var res = familyInfo.data[0][2].split("/");
-        document.getElementsByName("dateofbirth")[0].value=res[2]+"-"+res[1]+"-"+res[0];
+        document.getElementsByName("dateofbirth")[0].value=familyInfo.data[0][2];
         document.getElementsByName("contactnumber")[0].value=familyInfo.data[0][12];
         document.getElementsByName("address")[0].value=familyInfo.data[0][10];
         document.getElementsByName("postalcode")[0].value=familyInfo.data[0][11];
         document.getElementsByName("occupation")[0].value=familyInfo.data[0][9];
         document.getElementsByName("income")[0].value = familyInfo.data[0][5];
         document.getElementsByName("household")[0].value=familyInfo.data[0][3];
-         var element = document.getElementById("relationship");
-         
-        element.value = familyInfo.data[0][4];
-        element.value = "spouse";
-        if(familyInfo.data[0][7]=="Singaporean"){
-            
+		$("#relationship").val(familyInfo.data[0][4]).trigger("change");
+        if(familyInfo.data[0][7]=="Singaporean"){  
           document.getElementById("radio1").checked=true;
         }else{
           document.getElementById("radio2").checked=true;

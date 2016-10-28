@@ -148,7 +148,7 @@ function createStatistics(){
 					</div>
 					<div class="card-body">
 						<div class="row">
-							<div class="col-sm-4">
+							<div class="col-sm-3">
 								<div class="sub-title">Month </div>
 								<div>
 									<select class="month" name="monthfrom" style="width:47%" >
