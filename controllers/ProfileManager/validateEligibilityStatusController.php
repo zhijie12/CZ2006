@@ -94,8 +94,11 @@
 						"FianceFianceeScheme"=>$FianceFianceeScheme,"SingleSingaporeCitizen"=>$SingleSingaporeCitizen,
 						"SinglesGrant"=>$SinglesGrant,"SinglesGrantAmount"=>$SinglesGrantAmount,
 						"FirstTimeFamilygrant"=>$FirstTimeFamilygrant,"FirstTimeFamilygrantAmount"=>$FirstTimeFamilygrantAmount);
-		insertStatus($result,$mysql);
-		return $result;
+		if(insertStatus($result,$mysql)){
+			return $result;
+		}else{
+			echo "<br> ERROR";
+		}
 	}
 	function insertStatus($result,$mysql){
 		$es = new EligibilityStatus();
@@ -114,13 +117,12 @@
 			$result = $mysql->query($sql);
 		}
 		$sql = $es->getInsertSQL();
-		print_r($sql);
-		echo "<br/>";
 		$result = $mysql->query($sql);
 		if($result){
-			echo "done";
+			return true;
 		}else{
 			echo mysqli_error($mysql);
+			return false;
 		}
 	}
 	function getMainApplicant($mysql){
