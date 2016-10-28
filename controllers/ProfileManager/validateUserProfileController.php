@@ -54,7 +54,7 @@
 				$userProfile->setHDBOwnership(mysqli_real_escape_string($mysql,strtolower($_POST['hdbOwnership'])));
 
 				$sql= $userProfile->getInsertSQL();
-				echo $sql;
+				//echo $sql;
 				if ($mysql->query($sql)==true) {
 						//echo "Success";
 						$eligibilitystatus = checkEligibility($mysql);
