@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 		//Deal Status (buyerPropose/SellerAccept/SellerReject/BuyerAccept)
 
 		$insertSQL = "INSERT into concludeDeal (buyerNRIC, buyerOffer, dealStatus, resaleID, sellerNRIC, dateStarted)
-		VALUES ('".$buyerNRIC."', ".$proposeOffer.", 'buyerOffer', '".$resaleID."', '".$sellerNRIC."', NOW())";
+		VALUES ('".$buyerNRIC."', ".$proposeOffer.", 'Pending offer', '".$resaleID."', '".$sellerNRIC."', NOW())";
 		
 		$updateSQL = "update concludeDeal set buyerOffer=".$proposeOffer." where resaleID=".$resaleID." AND sellerNRIC = '".$sellerNRIC."' AND buyerNRIC = '".$buyerNRIC."'";
 		if ($mysql->query($insertSQL)==true){ 
