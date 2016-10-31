@@ -18,6 +18,10 @@
         $pageTitle = "Home -> Browse Past Transactions";
     }   else if($page == "coApplicant.php"){
         $pageTitle = "Home -> My Family Profile";
+    }   else if($page == "browseHDB.php"){
+        $pageTitle = "Home -> Browse HDB Resale Flats";
+    }   else if($page == "ViewAllDeals.php"){
+        $pageTitle = "Home -> View Proposed Deals";
     }
 ?>
 <!DOCTYPE html>

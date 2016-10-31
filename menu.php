@@ -168,6 +168,13 @@
                                          }?>
                                          ><a href="manageFlats.php"><span class= "icon glyphicon glyphicon-circle-arrow-up"></span><span class="title">Upload My HDB</span></a>
                                     </li>
+                                        <li
+                                            <?php 
+                                            if($page =="ViewAllDeals.php"){
+                                             echo "class=\"active\"";
+                                         }?>
+                                         ><a href="ViewAllDeals.php"><span class= "icon glyphicon glyphicon-list-alt"></span><span class="title">View All My Deals</span></a>
+                                    </li>
                                         <!--
                                         </ul>
                                     </div>

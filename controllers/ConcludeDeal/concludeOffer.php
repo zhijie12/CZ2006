@@ -4,7 +4,7 @@ session_start();
 
 		$successCount=0;
 		$submitType = $_POST['submitType'];
-		$buyerNRIC = $_POST['buyerNRIC'];
+		$buyerNRIC = $_POST['userNRIC'];
 		$sellerNRIC = $_POST['sellerNRIC'];
 		$resaleID = $_POST['resaleID']; 
 		if($submitType!="Accepted"){
