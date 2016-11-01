@@ -44,7 +44,6 @@ class UserAccountDAO{
 			$userAcc->setCreatedTime($createdTime);
 			$userAcc->setPassword($password);
 			if(password_verify($Password,$password)==false){
-				echo "match";
 				$userAcc = null;
 			}
 		}
