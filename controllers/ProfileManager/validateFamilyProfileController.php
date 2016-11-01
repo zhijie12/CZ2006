@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 	$id = mysqli_real_escape_string($mysql,$_SESSION['userNRIC']);
 	if(FamilyProfileDAO::checkExist($mysql,$id)>0){
 		if(FamilyProfileDAO::deleteFamilyProfile($mysql,$id)){
-			echo "ERROR";
+			//echo "ERROR";
 		}
 	}
 	$familyProfile = new FamilyProfile();
