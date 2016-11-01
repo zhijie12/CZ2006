@@ -86,19 +86,9 @@
                             </button>
                         </div>
                         <ul class="nav navbar-nav">
-                            <li
-                            <?php 
-                            if($page=="home.php"){
-                             echo "class=\"active\"";
-                            }
-                            ?>
-                             >
-                                <a href="home.php">
-                                    <span class="icon glyphicon glyphicon-home"></span><span class="title">Home</span>
-                                </a>
-                            </li>
+
                             <!--HarmoniousDB tabs-->
-                                                        <!-- View Profile  -->
+                            <!-- View Profile  -->
 
                             <li
                             <?php 
