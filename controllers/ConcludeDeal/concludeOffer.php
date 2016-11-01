@@ -4,8 +4,8 @@ session_start();
 
 		$successCount=0;
 		$submitType = $_POST['submitType'];
-		$buyerNRIC = $_POST['userNRIC'];
-		$sellerNRIC = $_POST['sellerNRIC'];
+		$buyerNRIC = $_POST['buyerNRIC'];
+		$sellerNRIC = $_SESSION['userProfile'];
 		$resaleID = $_POST['resaleID']; 
 		if($submitType!="Accepted"){
 		$UpdateSQL1= "UPDATE concludeDeal SET dateEnded=NOW(), dealStatus='Rejected' where resaleID= '".$resaleID."'"; 

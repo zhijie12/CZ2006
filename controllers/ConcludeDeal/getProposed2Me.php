@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 		LEFT JOIN coapplicant ON mainapplicant.nric= coapplicant.mainApplicantNRIC
 		INNER JOIN UserAccounts ON mainapplicant.nric=UserAccounts.NRIC 
 		INNER JOIN concludeDeal ON mainapplicant.nric=concludeDeal.buyerNRIC
-		 Where concludeDeal.sellerNRIC='".$sellerNRIC."' AND concludeDeal.dateEnded IS NULL";
+		 Where concludeDeal.sellerNRIC='".$sellerNRIC."'";
 		
 		$result = $mysql->query($sql);
 		$resultarray = mysqli_fetch_all($result,MYSQLI_NUM);
