@@ -137,7 +137,7 @@
 
                                     <div class="sub-title"> Postal Code </div>
                                     <div>
-                                        <input type="text" class="form-control" name="storey" placeholder="e.g. 7" 
+                                        <input type="text" class="form-control" name="storey" placeholder="e.g. 569956" 
                                         value="<?php echo "$storey"; ?>"required>
                                     </div>
 
