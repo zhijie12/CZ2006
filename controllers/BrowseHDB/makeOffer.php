@@ -9,9 +9,15 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 		$buyerNRIC = $_GET['buyerNRIC'];
 		$sellerNRIC = $_GET['sellerNRIC'];
 		$proposeOffer = $_GET['proposeOffer']; 
+
+		if ($proposeOffer<0){
+			$array=array('makeOffer','negativeOffer');	
+			$_SESSION["fromWhere"] = $array;
+			header("Location: ../../browseHDB.php");
+			return;
+		}
 		
 		//Deal Status (buyerPropose/SellerAccept/SellerReject/BuyerAccept)
-
 		$insertSQL = "INSERT into concludeDeal (buyerNRIC, buyerOffer, dealStatus, resaleID, sellerNRIC, dateStarted)
 		VALUES ('".$buyerNRIC."', ".$proposeOffer.", 'Pending offer', '".$resaleID."', '".$sellerNRIC."', NOW())";
 		

@@ -46,8 +46,19 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 			$resultarray[$i][0] = '<img src="' . $resultarray[$i][0] . '" width="128" height="128">';
 			$resultarray[$i][6] = "$".$resultarray[$i][6]; // Price column
 			$resultarray[$i][9] = 
-				"<form action='controllers/BrowseHDB/makeOffer.php' method='get'>
-					<input type='text' name='proposeOffer' style='width=100px' value='".$resultArray2[$i][2]."'> 
+				"
+				<script type='text/javascript'>
+				/*function checkValue(){
+					var x = document.forms['proposeOfferForm']['proposeOffer'].value;
+					if (x <= 0 ) {
+						alert('Unable to submit negative number!');
+						return false;
+					}
+				}*/
+				</script>
+
+				<form name='proposeOfferForm' action='controllers/BrowseHDB/makeOffer.php' method='get' >
+					<input type='text' id='proposeOffer' name='proposeOffer' style='width=100px' value='".$resultArray2[$i][2]."'> 
 					<input type='hidden' name='resaleID' value='".$resultArray2[$i][1]."'> 
 					<input type='hidden' name='buyerNRIC' value='".$buyerNRIC."'>
 					<input type='hidden' name='sellerNRIC' value='".$resultArray2[$i][0]."'>

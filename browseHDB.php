@@ -149,6 +149,12 @@
                             			<i class=\"fa fa-check\"></i>
                             			Your offer have failed to submit! Please check your input! 
                             		</div>";
+                            	}else if($incomingArr[0]=='makeOffer' && $incomingArr[1]=='negativeOffer'){
+                            		echo "
+                            		<div class=\"isa_error\">
+                            			<i class=\"fa fa-check\"></i>
+                            			Your offer cannot be neagtive! 
+                            		</div>";
                             	}else if($incomingArr[0]=='userProfile' && $incomingArr[1]=='s'){
                             		$eligibility = $incomingArr[2];
                             		echo "
@@ -179,7 +185,7 @@
 	                            </div>";
 		                        }        		
 
-							   $_SESSION["makeOffer"] = null;  //Clear it so it won't keep get stuck! 
+							   $_SESSION["fromWhere"] = null;  //Clear it so it won't keep get stuck! 
 							}
                            ?>
                            <table id="browseHDB" class="display">
@@ -191,7 +197,7 @@
                                         <th>Storey</th>
                                         <th>Floor Area</th>                                   
                                         <th>Lease Commence Date</th>
-                                        <th>Price</th>
+                                        <th>List Price</th>
                                         <th>Owner</th>                          
                                         <th>HDB Description</th>
                                         <th>Offer</th>
@@ -205,7 +211,7 @@
                                         <th>Storey</th>
                                         <th>Floor Area</th>                                   
                                         <th>Lease Commence Date</th>
-                                        <th>Price</th>
+                                        <th>List Price</th>
                                         <th>Owner</th>                          
                                         <th>HDB Description</th>
                                         <th>Offer</th>
