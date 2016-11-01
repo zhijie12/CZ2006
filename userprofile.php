@@ -36,21 +36,33 @@
             if (vcontactnumber == null || vcontactnumber == "") {
                 outputMsg=outputMsg + "- Contact number field is empty <br />";
             }
+			if (isNaN(vcontactnumber) || vcontactnumber.length!=8){
+				outputMsg=outputMsg + "- Enter 8 digits for Contact Number <br/>";
+			}
             if (vaddress == null || vaddress == "") {
                 outputMsg=outputMsg + "- Address field is empty <br />";
             }
             if (vpostalcode == null || vpostalcode == "") {
                 outputMsg=outputMsg + "- Postal Code field is empty <br />";
             }
+			if (isNaN(vpostalcode) || parseInt(vpostalcode)<0 || vpostalcode.length!=6){
+				outputMsg=outputMsg + "- Enter only 6 digit for Postal Code <br/>";
+			}
             if (voccupation == null || voccupation == "") {
                 outputMsg=outputMsg + "- occupation field is empty<br />";
             }
             if (vincome == null || vincome == "") {
                 outputMsg=outputMsg + "- Income field is empty<br />";
             }
+			if (isNaN(vincome) || parseInt(vincome)<0){
+				outputMsg=outputMsg + "- Enter only positive numbers for income <br/>";
+			}
             if (vmop == null || vmop == "") {
                 outputMsg=outputMsg + "- Current Home Occupation Duration field is empty<br />";
             }
+			if (isNaN(vmop) || parseInt(vmop)<0){
+				outputMsg=outputMsg + "- Enter only positive numbers for Current Home Occupation Duration<br/>";
+			}
             if (vhdbOwner == null || vhdbOwner == "") {
                 outputMsg=outputMsg + "- hdbOwnership field is not selected<br />";
             }

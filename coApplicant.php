@@ -76,25 +76,37 @@
             if (vcontactnumber == null || vcontactnumber == "") {
                 outputMsg=outputMsg + "- Contact number of co-applicant field is empty <br />";
             }
+			if (isNaN(vcontactnumber) || vcontactnumber.length!=8){
+				outputMsg=outputMsg + "- Enter 8 digits for Contact Number <br/>";
+			}
+			
             if (vaddress == null || vaddress == "") {
                 outputMsg=outputMsg + "- Address of co-applicant field is empty <br />";
             }
             if (vpostalcode == null || vpostalcode == "") {
                 outputMsg=outputMsg + "- Postal Code of co-applicant field is empty <br />";
             }
+			if (isNaN(vpostalcode) || parseInt(vpostalcode)<0 || vpostalcode.length!=6){
+				outputMsg=outputMsg + "- Enter only 6 digit for Postal Code <br/>";
+			}
             if (voccupation == null || voccupation == "") {
                 outputMsg=outputMsg + "- Occupation of co-applicant  field is empty<br />";
             }
             if (vincome == null || vincome == "") {
                 outputMsg=outputMsg + "- Income of co-applicant field  is empty<br />";
             }
-             if (hdbOwner == null || hdbOwner == "") {
+			if (isNaN(vincome) || parseInt(vincome)<0){
+				outputMsg=outputMsg + "- Enter only positive numbers for income <br/>";
+			}
+            if (hdbOwner == null || hdbOwner == "") {
                 outputMsg=outputMsg + "- HDB Ownership of co-applicant field is empty<br />";
             }
             if (vhousehold == null || vhousehold == "") {
                 outputMsg=outputMsg + "- Current number of family members living in the same household field is empty<br />";
             }
-
+			if (isNaN(vhousehold) || parseInt(vhousehold)<0){
+				outputMsg=outputMsg + "- Enter only positive numbers for number of family members living in the same household <br/>";
+			}
             if(outputMsg == null || outputMsg == ""){
                 return true;
             }else{

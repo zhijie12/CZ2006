@@ -118,7 +118,12 @@
 		if($FirstTimeFamilygrant){
 			$table = $table."<li>For the First Timer Family Grant, Grant Amount: \$$FirstTimeFamilygrantAmount</li>";
 		}
-		
+		if($eligibilitySell==false && $eligibilityBuy==false &&
+			$FianceFianceeScheme==false && $SingleSingaporeCitizen==false &&
+			$SinglesGrant==false && $FirstTimeFamilygrant==false){
+			
+			$table = $table."<li>Nil</li>";
+		}
 		$result = array("eligibilityBuy"=>$eligibilityBuy,"eligibilitySell"=>$eligibilitySell,
 						"FianceFianceeScheme"=>$FianceFianceeScheme,"SingleSingaporeCitizen"=>$SingleSingaporeCitizen,
 						"SinglesGrant"=>$SinglesGrant,"SinglesGrantAmount"=>$SinglesGrantAmount,
