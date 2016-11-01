@@ -50,7 +50,7 @@
 		$("#browseHDB_wrapper .row .col-sm-7").prepend("<input type='button' onclick='findNearbyFacility()' class='btn btn-default' style='float: right;height: 32px;'value='Check Nearby Facilities'>");
 		$(".mapFilter #changeRadius").on("click",function(){
 			radius = parseInt($(".mapFilter input[name='radius']").val());
-			alert(radius);
+			//alert(radius);
 			removeplotsPerma();
 			plotNearby(map,HDBLocation);
 		});
@@ -77,7 +77,7 @@
 		removeLocationPerma();
 		removeplotsPerma();
 		//var address = "BLOCK "+table.$('tr.selected')[0].cells[3].innerText+" "+table.$('tr.selected')[0].cells[2].innerText
-		var address = table.$('tr.selected')[0].cells[1].innerText;
+		var address = table.$('tr.selected')[0].cells[3].innerText;
 		var locations = [address];
 		if(locations){
 			for(i=0;i<locations.length;i++){
@@ -194,7 +194,7 @@
                                         <th>Image</th>     
                                         <th>Address</th>
                                         <th>Flat Type</th>                           
-                                        <th>Storey</th>
+                                        <th>Postal</th>
                                         <th>Floor Area</th>                                   
                                         <th>Lease Commence Date</th>
                                         <th>List Price</th>
@@ -208,7 +208,7 @@
                                         <th>Image</th>     
                                         <th>Address</th>
                                         <th>Flat Type</th>                           
-                                        <th>Storey</th>
+                                        <th>Postal</th>
                                         <th>Floor Area</th>                                   
                                         <th>Lease Commence Date</th>
                                         <th>List Price</th>

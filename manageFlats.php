@@ -135,7 +135,7 @@
                                         value="<?php echo "$floorarea"; ?>" required>
                                     </div>
 
-                                    <div class="sub-title"> Storey </div>
+                                    <div class="sub-title"> Postal Code </div>
                                     <div>
                                         <input type="text" class="form-control" name="storey" placeholder="e.g. 7" 
                                         value="<?php echo "$storey"; ?>"required>
