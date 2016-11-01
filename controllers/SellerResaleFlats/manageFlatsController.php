@@ -6,33 +6,6 @@ session_start();
 //$userProfile = unserialize($_SESSION['userProfile']);
 $NewResaleFlat = new NewResaleFlat();
 
-/*
-		// Create table if not exist
-		if($mysql->query("SHOW TABLES LIKE 'uploadedFlats'")!=1) 
-		{
-			//table does not exist
-			$createTableSQL = 
-			"CREATE TABLE uploadedFlats(
-			ID int AUTO_INCREMENT PRIMARY KEY, 
-			address text,
-			town text,
-			floorarea text,
-			storey text,
-			leaseCommence date,
-			askingPrice text,
-			flatType text,
-			flatModel text,
-			hdbDescription text,
-			dateSubmitted date
-			)";
-			if ($mysql->query($createTableSQL)==true) {
-            	//success
-				echo "Success!!";
-			}else {
-				echo "Unsuccessful!!";
-			}
-		}
-*/
 
 
 		if (!empty($_POST['address']) && !empty($_POST['town']) && !empty($_POST['floorarea']) 
@@ -61,6 +34,7 @@ $NewResaleFlat = new NewResaleFlat();
 		} else {
 		    //echo "Sorry, there was an error uploading your file.";
 		}
+		
 
 		$NewResaleFlat->setImage("IMG/hdbImage/".basename($_FILES["hdbImage"]["name"]));
 		$NewResaleFlat->setAddress($address);
@@ -74,8 +48,18 @@ $NewResaleFlat = new NewResaleFlat();
 		$NewResaleFlat->setHDBDescription($hdbDescription);
 		$NewResaleFlat->setDate($date);
 		$NewResaleFlat->setNric($_SESSION['userNRIC']);
-		$insertSQL = $NewResaleFlat->getInsertSQL();
-		$alterSQL = $NewResaleFlat->getAlterSQL();
+		
+		//if no image added then retain the previous image
+		if ( empty($_FILES["hdbImage"]["name"]) ){
+			$insertSQL = $NewResaleFlat->getInsertSQLnoImage();
+			$alterSQL = $NewResaleFlat->getAlterSQLnoImage();
+
+		} else {
+			$insertSQL = $NewResaleFlat->getInsertSQL();
+			$alterSQL = $NewResaleFlat->getAlterSQL();
+
+		}
+		
 
 		//echo ("Hello: $insertSQL");
 		if ($mysql->query($insertSQL)==true){ //insert successful

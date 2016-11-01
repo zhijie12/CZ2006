@@ -105,9 +105,24 @@
          return $insertFlatSQL;
       }
 
+      function getInsertSQLnoImage(){
+
+         $insertFlatSQL = "INSERT INTO `resaleflat` (`town`, `flatType`, `address`, `storey`, `floorArea`, `flatModel`, `leaseCommenceDate`, `price`, `ownerNRIC`, `uploadDate`, `hdbDescription`)
+             VALUES ('$this->town', '$this->flatType', '$this->address', '$this->storey', '$this->floorarea', '$this->flatModel', '$this->leaseCommence', '$this->askingPrice', '$this->nric' ,'$this->date', '$this->hdbDescription' )";     
+         
+         return $insertFlatSQL;
+      }
+
       function getAlterSQL(){
 
          $alterSQL = "UPDATE `resaleflat` SET `town` = '$this->town', `flatType` = '$this->flatType', `address` = '$this->address', `storey` = '$this->storey', `floorArea` = '$this->floorarea', `flatModel` = '$this->flatModel', `leaseCommenceDate` = '$this->leaseCommence', `price` = '$this->askingPrice', `uploadDate` = '$this->date', `imgUrl` = '$this->img', `hdbDescription` = '$this->hdbDescription' WHERE `resaleflat`.`ownerNric` = '$this->nric';";
+
+         return $alterSQL;
+      }
+
+      function getAlterSQLnoImage(){
+
+         $alterSQL = "UPDATE `resaleflat` SET `town` = '$this->town', `flatType` = '$this->flatType', `address` = '$this->address', `storey` = '$this->storey', `floorArea` = '$this->floorarea', `flatModel` = '$this->flatModel', `leaseCommenceDate` = '$this->leaseCommence', `price` = '$this->askingPrice', `uploadDate` = '$this->date', `hdbDescription` = '$this->hdbDescription' WHERE `resaleflat`.`ownerNric` = '$this->nric';";
 
          return $alterSQL;
       }

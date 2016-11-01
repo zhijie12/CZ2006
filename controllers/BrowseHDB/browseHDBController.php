@@ -7,7 +7,25 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 
 		$buyerNRIC = $_SESSION['userNRIC'];
 
-		$sql = "SELECT `imgUrl`, `address`, `flatType`, `storey`, `floorArea`, `leaseCommenceDate`, `price`, `email`, `hdbDescription` FROM `resaleflat` INNER JOIN `UserAccounts` on `ownerNRIC` = `nric` where concluded=0";
+		$sql = "SELECT
+				  `imgUrl`,
+				  `address`,
+				  `flatType`,
+				  `storey`,
+				  `floorArea`,
+				  `leaseCommenceDate`,
+				  `price`,
+				  `email`,
+				  `hdbDescription`
+				FROM
+				  `resaleflat`
+				INNER JOIN
+				  `UserAccounts`
+				ON
+				  `ownerNRIC` = `nric`
+				WHERE
+				  concluded = 0
+				  AND ownerNRIC != '".$buyerNRIC."'";
 		
 		$result = $mysql->query($sql);
 		$resultarray = mysqli_fetch_all($result,MYSQLI_NUM);
