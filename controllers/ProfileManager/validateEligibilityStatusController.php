@@ -62,6 +62,17 @@
 					}
 				}
 			}
+		}else{
+			if(strtoupper($coapplicant->getRelationship())!="SPOUSE"){
+				if(strtoupper($mainapplicant->getHDBOwnership())=="NO"){
+					if(strtoupper($mainapplicant->getCitizenship()) == "SINGAPOREAN"){
+						if($mainapplicantAge >=35){
+							$SingleSingaporeCitizen = true;
+							$eligibilityBuy = true;
+						}
+					}
+				}
+			}
 		}
 		
 		//Singles Grant
@@ -87,6 +98,7 @@
 				}
 			}
 		}
+		
 		if($eligibilitySell){
 			$table = $table."<li>Sell a resale flat</li>";
 		}
