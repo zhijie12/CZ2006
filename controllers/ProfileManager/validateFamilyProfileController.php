@@ -14,8 +14,10 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 }else{
 	$id = mysqli_real_escape_string($mysql,$_SESSION['userNRIC']);
 	if(FamilyProfileDAO::checkExist($mysql,$id)>0){
-		if(FamilyProfileDAO::deleteFamilyProfile($mysql,$id)){
-			//echo "ERROR";
+		if(FamilyProfileDAO::deleteFamilyProfile($mysql,$id)==false){
+			$array=array('familyProfile','f');
+			$_SESSION["fromWhere"] = $array;
+			header("Location: ../../browseHDB.php");
 		}
 	}
 	$familyProfile = new FamilyProfile();

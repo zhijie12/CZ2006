@@ -2,16 +2,18 @@
 	include_once("../../entity/UserProfile.php");
 	include_once("../../entity/FamilyProfile.php");
 	include_once("../../entity/EligibilityStatus.php");
+	include_once("../../DAO/mysql/FamilyProfileDAO.php");
+	include_once("../../DAO/mysql/UserProfileDAO.php");
 	include_once("../../DAO/mysql/eligibilityStatusDAO.php");
 	function checkEligibility($mysql){
 		date_default_timezone_set('Asia/Singapore');
 		$table = "<div style='margin-left: 5.5%;'> You are eligible to:<br/><ul>";
 		
-		$mainapplicant = getMainApplicant($mysql);
-		$coapplicant = getCoapplicant($mysql);
+		$mainapplicant = UserProfileDAO::getProfileDetails($mysql,$_SESSION['userNRIC']);//getMainApplicant($mysql);
+		$coapplicant = FamilyProfileDAO::getFamilyProfileDetails($mysql,$_SESSION['userNRIC']);//getCoapplicant($mysql);
 		$mainapplicantAge = DateTime::createFromFormat('Y-m-d', $mainapplicant->getDateOfBirth())->diff(new DateTime('now'))->y;
-		if($coapplicant!=NULL){
-			$coapplicantAge = DateTime::createFromFormat('Y-m-d', $coapplicant->getDateOfBirth())->diff(new DateTime('now'))->y;
+		if($coapplicant[0]!=NULL){
+			$coapplicantAge = DateTime::createFromFormat('Y-m-d', $coapplicant[0][2])->diff(new DateTime('now'))->y;
 		}
 		
 		//eligibility to sell resale
@@ -23,8 +25,8 @@
 		$eligibilityBuy = 0;
 		if($mainapplicant->getHDBOwnership()=="no"){
 			if($mainapplicantAge >=21){
-				if($coapplicant!=NULL){
-					if(strtoupper($coapplicant->getRelationship())=="SPOUSE"){
+				if($coapplicant[0]!=NULL){
+					if(strtoupper($coapplicant[0][4])=="SPOUSE"){
 						$eligibilityBuy = true;
 					}
 				}
@@ -39,10 +41,10 @@
 			You must submit your marriage certificate on or before the resale completion date
 		*/
 		$FianceFianceeScheme = 0;
-		if($coapplicant!=NULL){
-			if(strtoupper($mainapplicant->getHDBOwnership())=="NO"&&strtoupper($coapplicant->getHDBOwnership())=="NO"){
-				if(strtoupper($coapplicant->getRelationship())=="SPOUSE"){
-					if(strtoupper($mainapplicant->getCitizenship()) == "SINGAPOREAN" || strtoupper($coapplicant->getCitizenship())=="SINGAPOREAN"){
+		if($coapplicant[0]!=NULL){
+			if(strtoupper($mainapplicant->getHDBOwnership())=="NO"&&strtoupper($coapplicant[0][6])=="NO"){
+				if(strtoupper($coapplicant[0][4])=="SPOUSE"){
+					if(strtoupper($mainapplicant->getCitizenship()) == "SINGAPOREAN" || strtoupper($coapplicant[0][7])=="SINGAPOREAN"){
 						if($mainapplicantAge >=21 && $coapplicantAge >=21){
 							$FianceFianceeScheme = true;
 							$eligibilityBuy = true;
@@ -54,7 +56,7 @@
 		
 		//Single Singapore Citizen
 		$SingleSingaporeCitizen = 0;
-		if($coapplicant==NULL){
+		if($coapplicant[0]==NULL){
 			if(strtoupper($mainapplicant->getHDBOwnership())=="NO"){
 				if(strtoupper($mainapplicant->getCitizenship()) == "SINGAPOREAN"){
 					if($mainapplicantAge >=35){
@@ -64,7 +66,7 @@
 				}
 			}
 		}else{
-			if(strtoupper($coapplicant->getRelationship())!="SPOUSE"){
+			if(strtoupper($coapplicant[0][4])!="SPOUSE"){
 				if(strtoupper($mainapplicant->getHDBOwnership())=="NO"){
 					if(strtoupper($mainapplicant->getCitizenship()) == "SINGAPOREAN"){
 						if($mainapplicantAge >=35){
@@ -92,8 +94,8 @@
 		$FirstTimeFamilygrant = 0;
 		$FirstTimeFamilygrantAmount = 0;
 		if($FianceFianceeScheme==true){
-			if(strtoupper($mainapplicant->getHDBOwnership())=="NO"&&strtoupper($coapplicant->getHDBOwnership())=="NO"){
-				if(($mainapplicant->getIncome()+$coapplicant->getIncome())<=12000){
+			if(strtoupper($mainapplicant->getHDBOwnership())=="NO"&&strtoupper($coapplicant[0][6])=="NO"){
+				if(($mainapplicant->getIncome()+$coapplicant[0][5])<=12000){
 					$FirstTimeFamilygrant = true;
 					$FirstTimeFamilygrantAmount = 20000;
 				}
@@ -148,7 +150,7 @@
 			return $table;
 		}
 	}
-
+	/*
 	function getMainApplicant($mysql){
 		$mainapplicant = new UserProfile();
 		$mainapplicant->setNric($_SESSION['userNRIC']);
@@ -195,5 +197,5 @@
 			return null;
 		}
 	}
-	
+	*/
 ?>

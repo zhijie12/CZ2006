@@ -29,7 +29,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			$_SESSION['eligibilityBuy'] = $es['BuyerEligibility'];
 		}
 		
-		//print_r($_SESSION['eligibility']);
 		header("Location: ../../browseHDB.php");
 	}else{
 		echo "<br/>failed";

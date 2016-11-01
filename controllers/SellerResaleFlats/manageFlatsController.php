@@ -1,7 +1,7 @@
 <?php
 include("../config.php");
 include("../../entity/NewResaleFlat.php");
-include("../../entity/UserProfile.php");
+include_once("../../DAO/mysql/resaleHdbDAO.php");
 session_start();
 //$userProfile = unserialize($_SESSION['userProfile']);
 $NewResaleFlat = new NewResaleFlat();
@@ -49,30 +49,26 @@ $NewResaleFlat = new NewResaleFlat();
 		$NewResaleFlat->setDate($date);
 		$NewResaleFlat->setNric($_SESSION['userNRIC']);
 		
-		//if no image added then retain the previous image
 		if ( empty($_FILES["hdbImage"]["name"]) ){
-			$insertSQL = $NewResaleFlat->getInsertSQLnoImage();
-			$alterSQL = $NewResaleFlat->getAlterSQLnoImage();
-
+			if (resaleHdbDAO::createResaleFlat_WOImage($mysql,$NewResaleFlat)==true){ //insert successful
+				$array=array('manageFlat','s'); //Insert Success
+			}else if (resaleHdbDAO::updateResaleFlat_WOImage($mysql,$NewResaleFlat)==true){ //Already exist edit current value
+				$array=array('manageFlat','u'); //Updated
+			}else{
+				$array=array('manageFlat','f'); //FAILED
+			}
 		} else {
-			$insertSQL = $NewResaleFlat->getInsertSQL();
-			$alterSQL = $NewResaleFlat->getAlterSQL();
-
-		}
-		
-
-		//echo ("Hello: $insertSQL");
-		if ($mysql->query($insertSQL)==true){ //insert successful
-			$array=array('manageFlat','s'); //Insert Success
-		}else if ($mysql->query($alterSQL)==true){ //Already exist edit current value
-			$array=array('manageFlat','u'); //Updated
-		}else{
-			$array=array('manageFlat','f'); //FAILED
+			if (resaleHdbDAO::createResaleFlat_WImage($mysql,$NewResaleFlat)==true){ //insert successful
+				$array=array('manageFlat','s'); //Insert Success
+			}else if (resaleHdbDAO::updateResaleFlat_WImage($mysql,$NewResaleFlat)==true){ //Already exist edit current value
+				$array=array('manageFlat','u'); //Updated
+			}else{
+				$array=array('manageFlat','f'); //FAILED
+			}
 		}
 		
 		$_SESSION["fromWhere"] = $array;
 		header("Location: ../../manageFlats.php");
-		
 	}else{ //redirect back to the form
 		$array=array('manageFlat','f'); //FAILED
 		$_SESSION["fromWhere"] = $array;

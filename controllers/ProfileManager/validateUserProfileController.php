@@ -59,18 +59,9 @@
 				header("Location: ../../browseHDB.php");
 			}				
 		}else{
-			echo "error";
-			echo $_POST['contactnumber']."<br/>";
-			echo $_POST['fullname']."<br/>";
-			echo $_POST['address']."<br/>";
-			echo $_POST['postalcode']."<br/>";
-			echo $_POST['dateofbirth']."<br/>";
-			echo $_POST['occupation']."<br/>";
-			echo $_POST['income']."<br/>";
-			echo $_POST['citizenship']."<br/>";
-			echo $_POST['mop']."<br/>";
-			echo $_POST['hdbOwnership']."<br/>";
-			echo $id;
+			$array=array('userProfile','f');
+			$_SESSION["fromWhere"] = $array;
+			header("Location: ../../browseHDB.php");
 		}
 	}else{
 		header("Location: ../../index.php"); //Redirect back
