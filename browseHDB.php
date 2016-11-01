@@ -153,7 +153,7 @@
                             		echo "
                             		<div class=\"isa_error\">
                             			<i class=\"fa fa-check\"></i>
-                            			Your offer cannot be neagtive! 
+                            			Your offer cannot be negative! 
                             		</div>";
                             	}else if($incomingArr[0]=='userProfile' && $incomingArr[1]=='s'){
                             		$eligibility = $incomingArr[2];

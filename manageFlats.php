@@ -83,8 +83,8 @@
                                 </div>
                                 <div class="card-body">
                                 <?php
-                                    if(isset($_SESSION["manageFlat"])){
-                                        $incomingArr = $_SESSION["manageFlat"];  
+                                    if(isset($_SESSION["fromWhere"])){
+                                        $incomingArr = $_SESSION["fromWhere"];  
                                         if($incomingArr[0]=='manageFlat' && $incomingArr[1]=='s'){
                                             echo "
                                             <div class=\"isa_success\">
@@ -104,7 +104,7 @@
                                                Your HDB Flat have failed to submit! Please check your input! 
                                            </div>";
                                        }
-                                       $_SESSION["manageFlat"] = null;  //Clear it so it won't keep get stuck! 
+                                       $_SESSION["fromWhere"] = null;  //Clear it so it won't keep get stuck! 
                                     }
                                 ?>
 
