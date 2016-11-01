@@ -1,5 +1,6 @@
 <?php 
-include("../config.php");
+include_once("../../DAO/mysql/resaleHdbDAO.php");
+include_once("../../DAO/mysql/HDBDealDAO.php");
 session_start();
 
 if($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -7,42 +8,10 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 
 		$buyerNRIC = $_SESSION['userNRIC'];
 		$eligibleToBuy = $_SESSION['eligibilityBuy'];
-		//$_SESSION['eligibilitySell']
 
-		$sql = "SELECT
-				  `imgUrl`,
-				  `address`,
-				  `flatType`,
-				  `storey`,
-				  `floorArea`,
-				  `leaseCommenceDate`,
-				  `price`,
-				  `email`,
-				  `hdbDescription`
-				FROM
-				  `resaleflat`
-				INNER JOIN
-				  `UserAccounts`
-				ON
-				  `ownerNRIC` = `nric`
-				WHERE
-				  concluded = 0
-				  AND ownerNRIC != '".$buyerNRIC."'";
+		$resultarray = resaleHdbDAO::getFlatDetails($mysql,$buyerNRIC);
+		$resultArray2 = HDBDealDAO::getDealDetails($mysql,$buyerNRIC);
 		
-		$result = $mysql->query($sql);
-		$resultarray = mysqli_fetch_all($result,MYSQLI_NUM);
-		
-		$sql2 = "select ownerNRIC, r.resaleID, buyerOffer from 
-		resaleflat r left join concludeDeal c 
-		on r.resaleID = c.resaleID 
-		AND r.ownerNRIC = c.sellerNRIC 
-		AND '".$buyerNRIC."' = c.buyerNRIC
-		WHERE r.concluded = 0
-		";
-
-		$result2 = $mysql->query($sql2);
-		$resultArray2 = mysqli_fetch_all($result2,MYSQLI_NUM);
-
 		for ($i=0; $i<count($resultarray);$i++){
 
 			$resultarray[$i][0] = '<img src="' . $resultarray[$i][0] . '" width="128" height="128">';
