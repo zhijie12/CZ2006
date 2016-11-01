@@ -61,7 +61,7 @@ class UserProfileDAO{
 		$stmt->bind_result($NRIC,$contactNo,$name,$address,$postal,$dob,$occupation,$income,$citizenship,$profileURL,$MOPStatus,$hdbOwnership);
 		while($stmt->fetch()){
 			$userProfile = new UserProfile();
-			$userProfile->setContactNumber(contactNo);
+			$userProfile->setContactNumber($contactNo);
 			$userProfile->setFullName($name);
 			$userProfile->setAddress($address);
 			$userProfile->setDateOfBirth($dob);

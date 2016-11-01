@@ -48,8 +48,12 @@
     <!-- CSS App -->
     <link rel="stylesheet" type="text/css" href="css/dashstyle.css">
     <link rel="stylesheet" type="text/css" href="css/flat-blue.css">
-	
-	            <!-- Javascript Libs -->
+	<style type="text/css">
+	.flat-blue .side-menu.sidebar-inverse .navbar li > .disabled{
+		color: grey !important;
+	}
+	</style>
+	<!-- Javascript Libs -->
     <script type="text/javascript" src="js-dash/jquery.min.js"></script>
 	<script type="text/javascript" src="js-dash/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js-dash/Chart.min.js"></script>

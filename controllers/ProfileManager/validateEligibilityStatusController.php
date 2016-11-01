@@ -2,6 +2,7 @@
 	include_once("../../entity/UserProfile.php");
 	include_once("../../entity/FamilyProfile.php");
 	include_once("../../entity/EligibilityStatus.php");
+	include_once("../../DAO/mysql/eligibilityStatusDAO.php");
 	function checkEligibility($mysql){
 		date_default_timezone_set('Asia/Singapore');
 		$table = "<div style='margin-left: 5.5%;'> You are eligible to:<br/><ul>";
@@ -123,13 +124,10 @@
 						"SinglesGrant"=>$SinglesGrant,"SinglesGrantAmount"=>$SinglesGrantAmount,
 						"FirstTimeFamilygrant"=>$FirstTimeFamilygrant,"FirstTimeFamilygrantAmount"=>$FirstTimeFamilygrantAmount);
 		$table = $table."</ul></div>";
-		if(insertStatus($result,$mysql)){
-			return $table;
-		}else{
-			echo "<br> ERROR";
+		
+		if(eligibilityStatusDAO::checkExist($mysql,$_SESSION['userNRIC'])){
+			eligibilityStatusDAO::deleteProfile($mysql,$_SESSION['userNRIC']);
 		}
-	}
-	function insertStatus($result,$mysql){
 		$es = new EligibilityStatus();
 		$es->setNRIC($_SESSION['userNRIC']);
 		$es->setBuyerEligibility($result['eligibilityBuy']);
@@ -138,22 +136,14 @@
 		$es->setfianceScheme($result['FianceFianceeScheme']);
 		$es->setSinglesGrant($result['SinglesGrantAmount']);
 		$es->setFamilyGrant($result['FirstTimeFamilygrantAmount']);
-		$sql = $es->checkStatusQuery();
-		$result = $mysql->query($sql);
-		$NumOfRows = mysqli_num_rows($result);
-		if($NumOfRows>0){
-			$sql = $es->getDeleteSQL();
-			$result = $mysql->query($sql);
-		}
-		$sql = $es->getInsertSQL();
-		$result = $mysql->query($sql);
-		if($result){
-			return true;
-		}else{
-			echo mysqli_error($mysql);
-			return false;
+		
+		if(eligibilityStatusDAO::createEligibility($mysql,$es)){
+			$_SESSION['eligibilitySell'] = $es->SellerEligibility;
+			$_SESSION['eligibilityBuy'] = $es->BuyerEligibility;
+			return $table;
 		}
 	}
+
 	function getMainApplicant($mysql){
 		$mainapplicant = new UserProfile();
 		$mainapplicant->setNric($_SESSION['userNRIC']);

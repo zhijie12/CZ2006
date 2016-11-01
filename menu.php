@@ -156,7 +156,14 @@
                                             if($page =="manageFlats.php"){
                                              echo "class=\"active\"";
                                          }?>
-                                         ><a href="manageFlats.php"><span class= "icon glyphicon glyphicon-circle-arrow-up"></span><span class="title">Upload My HDB</span></a>
+                                         >
+										 
+										 <?php 
+										 if(isset($_SESSION['eligibilitySell'])==true  && $_SESSION['eligibilitySell']==1) {?>
+											<a href="manageFlats.php"><span class= "icon glyphicon glyphicon-circle-arrow-up"></span><span class="title">Upload My HDB</span></a>
+										 <?php }else{?>
+											<a class="disabled" href="#"><span class= "icon glyphicon glyphicon-circle-arrow-up"></span><span class="title">Upload My HDB</span></a>
+										 <?php }?>
                                     </li>
                                         <li
                                             <?php 
