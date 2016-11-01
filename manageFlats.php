@@ -69,16 +69,12 @@
             <!-- Main Content -->
             <div class="container-fluid">
                 <div class="side-body">
-                    <div class="page-title">
-                        <span class="title">Manage/Upload HDB Flats</span>
-                       <!-- <div class="description"> Upload/Manage your HDB Flats</div>-->
-                    </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">Enter the details of your Flat</div>
+                                        <div class="title"><span class= "icon glyphicon glyphicon-circle-arrow-up" style="padding-right: 15px;"></span>Enter the details of your Flat</div>
                                     </div>
                                 </div>
                                 <div class="card-body">

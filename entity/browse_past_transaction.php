@@ -67,10 +67,6 @@ function search(){
 
 <div class="container-fluid">
 	<div class="side-body">
-		<div class="page-title">
-			<span class="title">Dashboard</span>
-			<div class="description">A ui elements use in form, input, select, etc.</div>
-		</div>
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="card">

@@ -89,7 +89,16 @@
 
                             <!--HarmoniousDB tabs-->
                             <!-- View Profile  -->
-
+                            <li
+                            <?php 
+                            if($page=="browseHDB.php"){
+                             echo "class=\"active\"";
+                            }?>
+                            >
+                                <a href="browseHDB.php">
+                                    <span class="icon glyphicon glyphicon-search"></span><span class="title">Browse Resale HDB</span>
+                                </a>
+                            </li>
                             <li
                             <?php 
                             if($page=="userProfile.php" || $page =="coApplicant.php"){
@@ -116,16 +125,7 @@
                             </li>
                                 <!--End of dropdown-->  
                             <!-- ViewCurrent  -->
-                            <li
-                            <?php 
-                            if($page=="browseHDB.php"){
-                             echo "class=\"active\"";
-                            }?>
-                            >
-                                <a href="browseHDB.php">
-                                    <span class="icon glyphicon glyphicon-search"></span><span class="title">Browse Resale HDB</span>
-                                </a>
-                            </li>
+
                                 <!--End of dropdown-->
                                 <!-- View Past Listings  -->
                             <li

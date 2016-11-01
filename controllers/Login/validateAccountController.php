@@ -31,7 +31,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		
 		header("Location: ../../browseHDB.php");
 	}else{
-		echo "<br/>failed";
 		header("Location: ../../index.php?error=e4");
 		exit();
 	}

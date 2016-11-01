@@ -123,16 +123,12 @@
  <!-- Main Content -->
             <div class="container-fluid">
                 <div class="side-body">
-                    <div class="page-title">
-                        <span class="title"><span class="icon glyphicon glyphicon-home"></span>  Family Information</span>
-                       <!-- <div class="description">A ui elements use in form, input, select, etc.</div>-->
-                    </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">Please enter your co-applicant/family details:</div>
+                                        <div class="title"><span class="icon glyphicon glyphicon-home" style="padding-right: 15px;"></span>Please enter your co-applicant/family details:</div>
                                     </div>
                                 </div>
                                 <div class="card-body">

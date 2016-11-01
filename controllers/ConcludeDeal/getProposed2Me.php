@@ -29,27 +29,48 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 					$finalResult[$i][4]="None";
 				$finalResult[$i][5]=$resultarray[$i][7];
 				$finalResult[$i][6]=$resultarray[$i][9];
-				if($resultarray[$i][8]=="buyerOffer"){
-					$finalResult[$i][7]="Pending Response";
-				}else{
-					$finalResult[$i][7]=$resultarray[$i][8];
-				}
-				$finalResult[$i][8]=
+				if($resultarray[$i][8]=="buyerOffer"||$resultarray[$i][8]=="Rejected"){
+					if($resultarray[$i][8]=="Rejected"){
+					$finalResult[$i][7]="<p style='color:red;font-weight:bold;'>Rejected Offer</p>";
+					}else{
+					$finalResult[$i][7]="<p style='color:red;font-weight:bold;'>Pending Response </p>";
+					}
+					$finalResult[$i][8]=
 				"<form action='controllers/concludeDeal/concludeOffer.php' method='post'>
-					<input type='hidden' name='submitType' value='Accepted'> 
+					<input type='hidden' name='submitType' value='Accepted'>
+					<input type='hidden' name='currentStatus' value='".$resultarray[$i][8]."'>
 					<input type='hidden' name='buyerNRIC' value='".$resultarray[$i][0]."'>
 					<input type='hidden' name='sellerNRIC' value='".$sellerNRIC."'>
 					<input type='hidden' name='resaleID' value='".$resultarray[$i][11]."'>
+					
 					<input type='submit' style='margin:auto' value='Accept Offer'>
 				</form>";
 				$finalResult[$i][9]=
 				"<form action='controllers/concludeDeal/concludeOffer.php' method='post'>
 					<input type='hidden' name='submitType' value='Rejected'> 
+					<input type='hidden' name='currentStatus' value='".$resultarray[$i][8]."'>
 					<input type='hidden' name='buyerNRIC' value='".$resultarray[$i][0]."'>
 					<input type='hidden' name='sellerNRIC' value='".$sellerNRIC."'>
 					<input type='hidden' name='resaleID' value='".$resultarray[$i][11]."'>
 					<input type='submit' style='margin:auto' value='Reject Offer'>
 				</form>";
+				}else{
+					//$finalResult[$i][7]="<p style='color:green;font-weight:bold;'>".$resultarray[$i][8]."</p>";
+					$finalResult[$i][7]="<a name='accepted' href='finalizeDeal.php?resaleID=".$resultarray[$i][11]."&buyerNRIC=".$resultarray[$i][0]."&sellerNRIC=".$sellerNRIC."'
+				><span style='color:green;font-weight:bold;'>Accepted!</br> Click Me!</span></a>";
+					$finalResult[$i][8]=
+				"-";
+				$finalResult[$i][9]=
+				"<form action='controllers/concludeDeal/concludeOffer.php' method='post'>
+					<input type='hidden' name='submitType' value='Rejected'> 
+					<input type='hidden' name='currentStatus' value='".$resultarray[$i][8]."'>
+					<input type='hidden' name='buyerNRIC' value='".$resultarray[$i][0]."'>
+					<input type='hidden' name='sellerNRIC' value='".$sellerNRIC."'>
+					<input type='hidden' name='resaleID' value='".$resultarray[$i][11]."'>
+					<input type='submit' style='margin:auto' value='Reject Offer'>
+				</form>";
+				}
+
 
 
 		}

@@ -10,6 +10,10 @@
     .hideme{
         display:none !important;
     }
+    .accepted{
+        color:green !important;
+        font-weight:bold !important;
+    }
     </style>
 <script type="text/javascript">
     //Add your own scripts here
@@ -34,7 +38,7 @@
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">View Proposed Deals</span>
+                        <span class="title"><span class= "icon glyphicon glyphicon-list-alt" style="padding-right: 15px;"></span>View Proposed Deals</span>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
@@ -46,7 +50,8 @@
                                 </div>
                                 <div class="card-body">
                                      <?php
-                            $incomingArr = $_SESSION["concludeOffer"];  
+                            $incomingArr = $_SESSION["concludeOffer"]; 
+                            $iArr = $_SESSION["fromWhere"]; 
                             if($incomingArr[0]=='concludeOffer' && $incomingArr[1]=='s'){
                                 echo "
                                 <div class=\"isa_success\">
@@ -60,7 +65,19 @@
                                    Your offer have failed to save! Please try again! 
                                </div>";
                            }
-                           $_SESSION["concludeOffer"] = null;
+                           if($iArr[0]=='makeFinalOffer' && $iArr[1]=='s'){
+                                    echo "<div class=\"isa_success\">
+                                   <i class=\"fa fa-check\"></i>
+                                    Your decision has been saved successfully.
+                                </div>";
+                                }   else if($iArr[0]=='makeFinalOffer' && $iArr[1]=='s'){
+                                    echo "<div class=\"isa_error\">
+                                    <i class=\"fa fa-times-circle\"></i>
+                                    Your decision has been not been saved successfully.
+                                </div>";
+                                }                   
+                               $_SESSION["fromWhere"] = null;
+                            $_SESSION["concludeOffer"] = null;
                            ?>  
                                 <table id="proposed2me" class="display" style="text-align:center;">
                                 <thead>
@@ -102,6 +119,9 @@
                                 <div class="card-header">
                                     <div class="card-title">
                                         <div class="title">Overview the deals that you are interested in:</div>
+                                                                            </div>
+                                </div>
+                                <div class="card-body">
                                                                    <table id="iproposed" class="display" class="display" style="text-align:center;">
                                 <thead>
                                     <tr>
@@ -134,9 +154,7 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                                    </div>
-                                </div>
-                                <div class="card-body">
+
                         </div>
                                 </div>
 

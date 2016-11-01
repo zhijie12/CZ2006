@@ -124,7 +124,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">
-                                <div class="title"> Browse HDB Resale Flats</div>
+                                <div class="title"><span class="icon glyphicon glyphicon-search" style="padding-right: 15px;"></span> Browse HDB Resale Flats</div>
                             </div>
                         </div>
                         <div class="card-body">

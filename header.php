@@ -19,9 +19,13 @@
     }   else if($page == "coApplicant.php"){
         $pageTitle = "Home -> My Family Profile";
     }   else if($page == "browseHDB.php"){
-        $pageTitle = "Home -> Browse HDB Resale Flats";
+        $pageTitle = "Home";
     }   else if($page == "ViewAllDeals.php"){
         $pageTitle = "Home -> View Proposed Deals";
+    }   else if($page == "finalizeDeal.php"){
+        $pageTitle = "Home -> View Proposed Deals -> Finalize Deal";
+    }   else if($page=="manageFlats.php"){
+        $pageTitle = "Home -> Upload My HDB";
     }
 ?>
 <!DOCTYPE html>
