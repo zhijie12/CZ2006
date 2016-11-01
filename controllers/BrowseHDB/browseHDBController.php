@@ -7,7 +7,12 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 	if($_GET["action"]=="load"){
 
 		$buyerNRIC = $_SESSION['userNRIC'];
-		$eligibleToBuy = $_SESSION['eligibilityBuy'];
+		if (isset($_SESSION['eligibilityBuy'])){
+			$eligibleToBuy = $_SESSION['eligibilityBuy'];		
+		}else {
+			$eligibleToBuy = null;
+		}
+		
 
 		$resultarray = resaleHdbDAO::getFlatDetails($mysql,$buyerNRIC);
 		$resultArray2 = HDBDealDAO::getDealDetails($mysql,$buyerNRIC);
