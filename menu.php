@@ -167,7 +167,7 @@
                                     </li>
                                         <li
                                             <?php 
-                                            if($page =="ViewAllDeals.php"){
+                                            if($page =="ViewAllDeals.php" || $page=="finalizeDeal.php"){
                                              echo "class=\"active\"";
                                          }?>
                                          ><a href="ViewAllDeals.php"><span class= "icon glyphicon glyphicon-list-alt"></span><span class="title">View All My Deals</span></a>
