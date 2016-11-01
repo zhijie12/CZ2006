@@ -8,9 +8,9 @@ $NewResaleFlat = new NewResaleFlat();
 
 
 
-		if (!empty($_POST['address']) && !empty($_POST['town']) && !empty($_POST['floorarea']) 
-			&& !empty($_POST['storey']) && !empty($_POST['leaseCommence']) && !empty($_POST['askingPrice']) 
-			&& !empty($_POST['flatType']) && !empty($_POST['flatModel']) && !empty($_POST['hdbDescription'])){
+	if (!empty($_POST['address']) && !empty($_POST['town']) && !empty($_POST['floorarea']) 
+		&& !empty($_POST['storey']) && !empty($_POST['leaseCommence']) && !empty($_POST['askingPrice']) 
+		&& !empty($_POST['flatType']) && !empty($_POST['flatModel']) && !empty($_POST['hdbDescription'])){
 
 		$address = $_POST['address'];
 		$town = $_POST['town'];
@@ -63,17 +63,20 @@ $NewResaleFlat = new NewResaleFlat();
 
 		//echo ("Hello: $insertSQL");
 		if ($mysql->query($insertSQL)==true){ //insert successful
-	
-		}else { //Already exist edit current value
-			$mysql->query($alterSQL);
+			$array=array('manageFlat','s'); //Insert Success
+		}else if ($mysql->query($alterSQL)==true){ //Already exist edit current value
+			$array=array('manageFlat','u'); //Updated
+		}else{
+			$array=array('manageFlat','f'); //FAILED
 		}
-
 		
-
-
+		$_SESSION["fromWhere"] = $array;
 		header("Location: ../../manageFlats.php");
+		
 	}else{ //redirect back to the form
-
+		$array=array('manageFlat','f'); //FAILED
+		$_SESSION["fromWhere"] = $array;
+		header("Location: ../../manageFlats.php");
 	}
 
 ?>

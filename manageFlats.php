@@ -26,6 +26,13 @@
     $hdbDescription= $row['hdbDescription'];
     $img = $row['imgUrl']
 ?>
+
+<style type="text/css">     
+    select {
+        width:200px;
+    }
+</style>
+
 <!DOCTYPE html>
 <html>
 
@@ -75,6 +82,32 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                <?php
+                                    if(isset($_SESSION["manageFlat"])){
+                                        $incomingArr = $_SESSION["manageFlat"];  
+                                        if($incomingArr[0]=='manageFlat' && $incomingArr[1]=='s'){
+                                            echo "
+                                            <div class=\"isa_success\">
+                                               <i class=\"fa fa-check\"></i>
+                                               Your HDB Flat have been submitted successfully!
+                                           </div>";
+                                       }else if($incomingArr[0]=='manageFlat' && $incomingArr[1]=='u'){
+                                            echo "
+                                            <div class=\"isa_success\">
+                                               <i class=\"fa fa-check\"></i>
+                                               Your HDB Flat have been updated successfully!
+                                           </div>";
+                                       }else if($incomingArr[0]=='manageFlat' && $incomingArr[1]=='f'){
+                                            echo "
+                                            <div class=\"isa_error\">
+                                               <i class=\"fa fa-check\"></i>
+                                               Your HDB Flat have failed to submit! Please check your input! 
+                                           </div>";
+                                       }
+                                       $_SESSION["manageFlat"] = null;  //Clear it so it won't keep get stuck! 
+                                    }
+                                ?>
+
                                     <form method="post" action="controllers/SellerResaleFlats/manageFlatsController.php" enctype="multipart/form-data">
                                     <div class="sub-title">HDB Image </div>
                                     <div> 
@@ -122,33 +155,71 @@
 
 
                                     <div class="sub-title"> Flat Model: </div>
-                                    <div> <?php echo "$flatType"; ?>
+                                    <div> 
                                         <select name="flatType" id="flatType" required> 
-                                            <option value="2 Room"> 2 Room </option>
-                                            <option value="3 Room"> 3 Room </option>
-                                            <option value="4 room"> 4 Room </option>
-                                            <option value="5 room"> 5 Room </option>
-                                            <option value="Executive"> Executive </option>
-                                        </select>   
+                                            <option <?php if($flatType == "2 Room") { echo "selected=selected";} ?> 
+                                            value="2 Room"> 2 Room </option>
+
+                                            <option <?php if($flatType == "3 Room") { echo "selected=selected";} ?> 
+                                            value="3 Room"> 3 Room </option>
+
+                                            <option <?php if($flatType == "4 Room") { echo "selected=selected";} ?> 
+                                            value="4 Room"> 4 Room </option>
+
+                                            <option <?php if($flatType == "5 Room") { echo "selected=selected";} ?> 
+                                            value="5 Room"> 5 Room </option>
+
+                                            <option <?php if($flatType == "Executive") { echo "selected=selected";} ?> 
+                                            value="Executive"> Executive </option>
+                                        </select>                                   
+                                        
                                     </div>
 
                                     <div class="sub-title"> Flat Type: </div>
                                     <div>
-                                        <select name="flatModel" id="flatModel" required> 
-                                            <option> Adjoined Flat </option>    
-                                            <option> Apartment </option>
-                                            <option> Improved </option>
-                                            <option> Improved Maisonette </option>
-                                            <option> Maisonette </option>
-                                            <option> Model A </option>
-                                            <option> Model A-Maisonette </option>
-                                            <option> Model A2 </option>
-                                            <option> Multi-Generation </option>
-                                            <option> New Generation</option>
-                                            <option> Premium Apartment</option>
-                                            <option> Premium Maisonette</option>
-                                            <option> Standard </option>
-                                            <option> Terrace </option>
+                                        <select name="flatModel" id="flatModel" required > 
+                                            <option <?php if ($flatModel == "Adjoined Flat") { echo "selected=selected"; } ?> 
+                                            value="Adjoined Flat" > Adjoined Flat </option>    
+
+                                            <option <?php if ($flatModel == "Apartment") { echo "selected=selected"; } ?> 
+                                            value="Apartment" > Apartment </option>
+
+                                            <option <?php if ($flatModel == "Improved") { echo "selected=selected"; } ?> 
+                                            value="Improved" > Improved </option>
+
+                                            <option <?php if ($flatModel == "Improved Maisonette") { echo "selected=selected"; } ?> 
+                                            value="Improved Maisonette" > Improved Maisonette </option>
+
+                                            <option <?php if ($flatModel == "Maisonette") { echo "selected=selected"; } ?> 
+                                            value="Maisonette" > Maisonette </option>
+
+                                            <option <?php if ($flatModel == "Model A") { echo "selected=selected"; } ?> 
+                                            value="Model A" > Model A </option>
+
+                                            <option <?php if ($flatModel == "Model A-Maisonette") { echo "selected=selected"; } ?> 
+                                            value="Model A-Maisonette" > Model A-Maisonette </option>
+
+                                            <option <?php if ($flatModel == "Model A2") { echo "selected=selected"; } ?> 
+                                            value="Model A2" > Model A2 </option>
+
+                                            <option <?php if ($flatModel == "Multi-Generation") { echo "selected=selected"; } ?> 
+                                            value="Multi-Generation" > Multi-Generation </option>
+
+                                            <option <?php if ($flatModel == "New Generation") { echo "selected=selected"; } ?> 
+                                            value="New Generation" > New Generation</option>
+
+                                            <option <?php if ($flatModel == "Premium Apartment") { echo "selected=selected"; } ?> 
+                                            value="Premium Apartment" > Premium Apartment</option>
+
+                                            <option <?php if ($flatModel == "Premium Maisonette") { echo "selected=selected"; } ?> 
+                                            value="Premium Maisonette" > Premium Maisonette</option>
+
+                                            <option <?php if ($flatModel == "Standard") { echo "selected=selected"; } ?> 
+                                            value="Standard" > Standard </option>
+
+                                            <option <?php if ($flatModel == "Terrace") { echo "selected=selected"; } ?> 
+                                            value="Terrace" > Terrace </option>
+
                                         </select>   
                                     </div>
 
@@ -166,21 +237,6 @@
           <footer class="app-footer">
         </footer>
         <div>
-            <!-- Javascript Libs -->
-            <script type="text/javascript" src="js-dash/jquery.min.js"></script>
-            <script type="text/javascript" src="js-dash/bootstrap.min.js"></script>
-            <script type="text/javascript" src="js-dash/Chart.min.js"></script>
-            <script type="text/javascript" src="js-dash/bootstrap-switch.min.js"></script>
-            <script type="text/javascript" src="js-dash/jquery.matchHeight-min.js"></script>
-            <script type="text/javascript" src="js-dash/jquery.dataTables.min.js"></script>
-            <script type="text/javascript" src="js-dash/dataTables.bootstrap.min.js"></script>
-            <script type="text/javascript" src="js-dash/select2.full.min.js"></script>
-            <script type="text/javascript" src="js-dash/ace.js"></script>
-            <script type="text/javascript" src="js-dash/mode-html.js"></script>
-            <script type="text/javascript" src="js-dash/theme-github.js"></script>
-            <!-- Javascript -->
-            <script type="text/javascript" src="js-dash/app.js"></script>
-            <script type="text/javascript" src="js-dash/index.js"></script>
 </body>
 
 </html>

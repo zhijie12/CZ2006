@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 		}
 		
 		//echo $updateSQL;
-		$_SESSION["makeOffer"] = $array;
+		$_SESSION["fromWhere"] = $array;
 		header("Location: ../../browseHDB.php");			
 	}
 }

@@ -129,27 +129,56 @@
                         </div>
                         <div class="card-body">
                             <?php
-							if(isset($_SESSION["makeOffer"])){
-								$incomingArr = $_SESSION["makeOffer"];  
-								if($incomingArr[0]=='makeOffer' && $incomingArr[1]=='s'){
-									echo "
-									<div class=\"isa_success\">
-									   <i class=\"fa fa-check\"></i>
-									   Your offer have been submitted successfully!
-								   </div>";
-							   }else if($incomingArr[0]=='makeOffer' && $incomingArr[1]=='u'){
-									echo "
-									<div class=\"isa_success\">
-									   <i class=\"fa fa-check\"></i>
-									   Your offer have been updated successfully!
-								   </div>";
-							   }else if($incomingArr[0]=='makeOffer' && $incomingArr[1]=='f'){
-									echo "
-									<div class=\"isa_error\">
-									   <i class=\"fa fa-check\"></i>
-									   Your offer have failed to submit! Please check your input! 
-								   </div>";
-							   }
+                            if(isset($_SESSION["fromWhere"])){
+                            	$incomingArr = $_SESSION["fromWhere"];  
+                            	if($incomingArr[0]=='makeOffer' && $incomingArr[1]=='s'){
+                            		echo "
+                            		<div class=\"isa_success\">
+                            			<i class=\"fa fa-check\"></i>
+                            			Your offer have been submitted successfully!
+                            		</div>";
+                            	}else if($incomingArr[0]=='makeOffer' && $incomingArr[1]=='u'){
+                            		echo "
+                            		<div class=\"isa_success\">
+                            			<i class=\"fa fa-check\"></i>
+                            			Your offer have been updated successfully!
+                            		</div>";
+                            	}else if($incomingArr[0]=='makeOffer' && $incomingArr[1]=='f'){
+                            		echo "
+                            		<div class=\"isa_error\">
+                            			<i class=\"fa fa-check\"></i>
+                            			Your offer have failed to submit! Please check your input! 
+                            		</div>";
+                            	}else if($incomingArr[0]=='userProfile' && $incomingArr[1]=='s'){
+                            		$eligibility = $incomingArr[2];
+                            		echo "
+                            		<div class=\"isa_success\">
+                            			<i class=\"fa fa-check\"></i>
+                            			Your Profile has been saved successfully.<br/>
+                            			$eligibility;
+                            		</div>";
+                            	}else if($incomingArr[0]=='userProfile' && $incomingArr[1]=='f'){
+                            		echo "<div class=\"isa_error\">
+	                            		<i class=\"fa fa-times-circle\"></i>
+	                            		Your Profile has not been saved successfully.
+                            		</div>";
+	                            }else if($incomingArr[0]=='familyProfile' && $incomingArr[1]=='s'){
+	                            	$eligibility = $incomingArr[2];
+	                            	echo "
+	                            	<div class=\"isa_success\">
+	                            		<i class=\"fa fa-check\"></i>
+	                            		Your Family Profile has been saved successfully.
+	                            		$eligibility;
+	                            	</div>
+	                            	";
+
+	                            }else if($incomingArr[0]=='familyProfile' && $incomingArr[1]=='f'){
+	                            	echo "<div class=\"isa_error\">
+	                            	<i class=\"fa fa-times-circle\"></i>
+	                            	Your Family Profile has not been saved successfully.
+	                            </div>";
+		                        }        		
+
 							   $_SESSION["makeOffer"] = null;  //Clear it so it won't keep get stuck! 
 							}
                            ?>

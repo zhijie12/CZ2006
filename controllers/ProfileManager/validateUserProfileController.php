@@ -52,11 +52,11 @@
 				$_SESSION['userProfile'] = serialize($userProfile);
 						
 				$_SESSION["fromWhere"] = $array;
-				header("Location: ../../home.php");
+				header("Location: ../../browseHDB.php");
 			}else{
 				$array=array('userProfile','f');
 				$_SESSION["fromWhere"] = $array;
-				header("Location: ../../home.php");
+				header("Location: ../../browseHDB.php");
 			}				
 		}else{
 			echo "error";

@@ -37,11 +37,11 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 		$eligibilitystatus = checkEligibility($mysql);
 		$array=array('familyProfile','s',$eligibilitystatus);
 		$_SESSION["fromWhere"] = $array;
-		header("Location: ../../home.php");
+		header("Location: ../../browseHDB.php");
 	}else{
 		$array=array('familyProfile','f');
 		$_SESSION["fromWhere"] = $array;
-		header("Location: ../../home.php");
+		header("Location: ../../browseHDB.php");
 	}
 }
 ?>

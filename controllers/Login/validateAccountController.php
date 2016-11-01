@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		$_SESSION['userNRIC']= $userAcc->getNric();
 		$_SESSION['userEmail']= $userAcc->getEmail();
 		$_SESSION['userProfile'] = serialize($userProfile);
-		header("Location: ../../home.php");
+		header("Location: ../../browseHDB.php");
 	}else{
 		echo "<br/>failed";
 		header("Location: ../../index.php?error=e4");
