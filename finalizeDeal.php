@@ -1,5 +1,7 @@
+
+<?php include("header.php") ?>
 <?php
-    session_start();
+    //session_start();
     $resaleID=$_GET['resaleID'];
     $buyerNRIC=$_GET['buyerNRIC'];
     $sellerNRIC=$_GET['sellerNRIC'];
@@ -11,8 +13,6 @@
         exit();
     }
 ?>
-<?php include("header.php") ?>
-
 <style>
 table, td, th {
     border: 1px solid #ddd;
@@ -102,9 +102,9 @@ th, td {
          $("div[name='conBody").append("<div class='sub-title'>Please check if all the information is correct</br>Pending Buyer Final Acknowledgement</div>");
         }else{
          $("div[name='conBody").append("<div class='sub-title'>To Download the forms, click below</br></div>");
-         $("div[name='smallerBod").append("<a href='PDF/HDB.pdf' target='_blank'><h4 style='font-dectoration:'underline;'>HDB Forms</h4></a>");
+         $("div[name='smallerBod").append("<a href='PDF/HDB.pdf' style='text-decoration: underline;' target='_blank'><h4 style='font-dectoration:underline;'>HDB Forms</h4></a>");
 
-         $("div[name='smallerBod").append("<a href='PDF/agent.pdf' target='_blank'><h4 style='font-dectoration:'underline;'>Agent Forms</h4></a>");
+         $("div[name='smallerBod").append("<a href='PDF/agent.pdf' style='text-decoration: underline;' target='_blank'><h4 style='font-dectoration:'underline;'>Agent Forms</h4></a>");
         }
 
       })

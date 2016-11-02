@@ -96,7 +96,7 @@ session_start();
 		header("Location: index.php"); //Redirect back
         exit();
 	}		
-		$final = array("draw"=>1,"recordsTotal"=>count($finalArray),"recordsFiltered"=>count($finalResult),"data"=>$finalArray);
+		$final = array("draw"=>1,"recordsTotal"=>count($finalArray),"recordsFiltered"=>count($finalArray),"data"=>$finalArray);
 		$json = json_encode($finalArray);
 		echo $json;
 }else{
