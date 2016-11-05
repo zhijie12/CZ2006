@@ -75,7 +75,7 @@ class PastTransactionDAO{
 			}else{$flatModel = "(1=1)";}
 			
 			if($LeaseCommenceYearV!=""){
-			$LeaseCommenceYear = "leaseCommenceDate >= $LeaseCommenceYearV]";
+			$LeaseCommenceYear = "leaseCommenceDate >= $LeaseCommenceYearV";
 			}else{$LeaseCommenceYear="(1=1)";}
 			
 			if($priceV!=""){
@@ -119,7 +119,7 @@ class PastTransactionDAO{
 			}else{$flatModel = "(1=1)";}
 			
 			if($LeaseCommenceYearV!=""){
-			$LeaseCommenceYear = "leaseCommenceDate >= $LeaseCommenceYearV]";
+			$LeaseCommenceYear = "leaseCommenceDate >= $LeaseCommenceYearV";
 			}else{$LeaseCommenceYear="(1=1)";}
 			
 			if($priceV!=""){

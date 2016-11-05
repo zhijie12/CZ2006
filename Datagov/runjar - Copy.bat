@@ -1,0 +1,1 @@
+java -jar "C:\Apache24\htdocs\CZ2006\Datagov\PTFHDB.jar" "https://data.gov.sg/dataset/7a339d20-3c57-4b11-a695-9348adfd7614/resource/83b2fc37-ce8c-4df4-968b-370fd818138b/download/resale-flat-prices-based-on-registration-date-from-march-2012-onwards.csv" "output/" "PFT.csv" "jdbc:mysql://localhost:3306/harmoniouslivingdb?useSSL=false" "root" "password"

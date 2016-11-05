@@ -5,7 +5,10 @@ include_once("../../entity/UserProfile.php");
 class UserProfileDAO{
 	public static function createProfile($conn,$userProfile){
 		$sql = "INSERT INTO `mainapplicant` 
-			(`nric`, `contactNo`, `name`, `address`, `postalCode`, `dateOfBirth`, `occupation`, `income`, `citizenship`, `profileUrl`, `MOPStatus`, `hdbOwnership`) VALUES
+			(`nric`, `contactNo`, `name`,
+			`address`, `postalCode`, `dateOfBirth`,
+			`occupation`, `income`, `citizenship`,
+			`profileUrl`, `MOPStatus`, `hdbOwnership`) VALUES
             (?,?,?,?,?,?,?,?,?,?,?,?)";
 		$stmt = $conn->prepare($sql);
 		$stmt->bind_param("sississdssis",

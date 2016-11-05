@@ -1,0 +1,8 @@
+-to run PTFHDB.jar
+
+java -jar "path_to_jarfile" "URL" "file_dir" "output_CSV_filename" "DBURL" "DBUSER" "DBPW"
+
+
+on windows: create a new task on task scheduler to schedule to run the batch file every 2 months
+
+on linux: create a cron job to run the bash script

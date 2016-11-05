@@ -50,35 +50,40 @@
                                 </div>
                                 <div class="card-body">
                                      <?php
-                            $incomingArr = $_SESSION["concludeOffer"]; 
-                            $iArr = $_SESSION["fromWhere"]; 
-                            if($incomingArr[0]=='concludeOffer' && $incomingArr[1]=='s'){
-                                echo "
-                                <div class=\"isa_success\">
-                                   <i class=\"fa fa-check\"></i>
-                                   Your offer details have been saved successfully!
-                               </div>";
-                           }else  if($incomingArr[0]=='concludeOffer' && $incomingArr[1]=='f'){
-                                echo "
-                                <div class=\"isa_error\">
-                                   <i class=\"fa fa-check\"></i>
-                                   Your offer have failed to save! Please try again! 
-                               </div>";
-                           }
-                           if($iArr[0]=='makeFinalOffer' && $iArr[1]=='s'){
-                                    echo "<div class=\"isa_success\">
-                                   <i class=\"fa fa-check\"></i>
-                                    Your decision has been saved successfully.
-                                </div>";
-                                }   else if($iArr[0]=='makeFinalOffer' && $iArr[1]=='s'){
-                                    echo "<div class=\"isa_error\">
-                                    <i class=\"fa fa-times-circle\"></i>
-                                    Your decision has been not been saved successfully.
-                                </div>";
-                                }                   
-                               $_SESSION["fromWhere"] = null;
-                            $_SESSION["concludeOffer"] = null;
-                           ?>  
+									 $iArr = $_SESSION["fromWhere"]; 
+									if(isset($_SESSION["concludeOffer"])==false){
+										
+									}else{
+										$incomingArr = $_SESSION["concludeOffer"]; 
+										
+										if($incomingArr[0]=='concludeOffer' && $incomingArr[1]=='s'){
+											echo "
+											<div class=\"isa_success\">
+											   <i class=\"fa fa-check\"></i>
+											   Your offer details have been saved successfully!
+										   </div>";
+									   }else  if($incomingArr[0]=='concludeOffer' && $incomingArr[1]=='f'){
+											echo "
+											<div class=\"isa_error\">
+											   <i class=\"fa fa-check\"></i>
+											   Your offer have failed to save! Please try again! 
+										   </div>";
+									   }
+								   }
+								   if($iArr[0]=='makeFinalOffer' && $iArr[1]=='s'){
+											echo "<div class=\"isa_success\">
+										   <i class=\"fa fa-check\"></i>
+											Your decision has been saved successfully.
+										</div>";
+										}   else if($iArr[0]=='makeFinalOffer' && $iArr[1]=='s'){
+											echo "<div class=\"isa_error\">
+											<i class=\"fa fa-times-circle\"></i>
+											Your decision has been not been saved successfully.
+										</div>";
+										}                   
+									   $_SESSION["fromWhere"] = null;
+									$_SESSION["concludeOffer"] = null;
+								   ?>  
                                 <table id="proposed2me" class="display" style="text-align:center;">
                                 <thead>
                                     <tr>    

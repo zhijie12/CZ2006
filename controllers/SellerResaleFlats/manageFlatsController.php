@@ -4,10 +4,8 @@ include("../../entity/NewResaleFlat.php");
 include_once("../../DAO/mysql/resaleHdbDAO.php");
 session_start();
 //$userProfile = unserialize($_SESSION['userProfile']);
+if($_SERVER["REQUEST_METHOD"] == "POST") {
 $NewResaleFlat = new NewResaleFlat();
-
-
-
 	if (!empty($_POST['address']) && !empty($_POST['town']) && !empty($_POST['floorarea']) 
 		&& !empty($_POST['storey']) && !empty($_POST['leaseCommence']) && !empty($_POST['askingPrice']) 
 		&& !empty($_POST['flatType']) && !empty($_POST['flatModel']) && !empty($_POST['hdbDescription'])){
@@ -74,5 +72,5 @@ $NewResaleFlat = new NewResaleFlat();
 		$_SESSION["fromWhere"] = $array;
 		header("Location: ../../manageFlats.php");
 	}
-
+}
 ?>

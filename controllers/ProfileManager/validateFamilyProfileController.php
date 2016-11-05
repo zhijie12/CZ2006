@@ -34,16 +34,21 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 	$familyProfile->setHDBOwnership($_POST['hdbOwnership']);
 	$familyProfile->setOccupation($_POST['occupation']);
 	$familyProfile->setMainApplicantnric($id);
-	
+	//echo "asd1";
 	if(FamilyProfileDAO::createFamilyProfile($mysql,$familyProfile)==true){
+		//echo "asd2";
 		$eligibilitystatus = checkEligibility($mysql);
 		$array=array('familyProfile','s',$eligibilitystatus);
 		$_SESSION["fromWhere"] = $array;
 		header("Location: ../../browseHDB.php");
+		//echo "asd4";
 	}else{
+		//echo "asd3";
 		$array=array('familyProfile','f');
 		$_SESSION["fromWhere"] = $array;
 		header("Location: ../../browseHDB.php");
 	}
+	
+	//echo mysqli_error($mysql);
 }
 ?>

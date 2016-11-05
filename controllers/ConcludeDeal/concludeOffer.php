@@ -26,7 +26,7 @@ session_start();
 					if ($mysql->query($updateSQL3)==true){
 						$successCount++;
 					}
-				}
+			}
 				//Deal Status (buyerPropose/SellerAccept/SellerReject/BuyerAccept)
 				$UpdateSQL2= "UPDATE concludeDeal SET dealStatus='".$submitType."' where resaleID= '".$resaleID."' AND buyerNRIC ='".$buyerNRIC."'"; 
 					if ($mysql->query($UpdateSQL2)==true){
@@ -59,11 +59,11 @@ session_start();
 						$successCount++;
 					}
 			if (($successCount==3) || ($successCount==3)){ 
-					$array=array('concludeOffer','s');	
-				}else { 
-					$array=array('concludeOffer','f');			
-				}
-				$_SESSION["concludeOffer"] = $array;
-				header("Location: ../../ViewAllDeals.php");	
+				$array=array('concludeOffer','s');	
+			}else { 
+				$array=array('concludeOffer','f');			
+			}
+			$_SESSION["concludeOffer"] = $array;
+			header("Location: ../../ViewAllDeals.php");	
 		}	
 ?>
